@@ -16,7 +16,7 @@
 #import <UIImageView+FadeIn.h>
 #import <NXOAuth2.h>
 
-static const BOOL kDebugForceLogin = YES; // if YES then the user will always be presented with the login view controller first regardless of their authentication state
+static const BOOL kDebugForceLogin = NO; // if YES then the user will always be presented with the login view controller first regardless of their authentication state
 
 static NSString *kSupplementaryViewFooterReuseIdentifier = @"co.oceanlabs.ps.kSupplementaryViewHeaderReuseIdentifier";
 static NSString *kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImagePickerCellReuseIdentifier";
