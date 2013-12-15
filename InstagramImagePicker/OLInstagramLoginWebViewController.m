@@ -7,7 +7,6 @@
 //
 
 #import "OLInstagramLoginWebViewController.h"
-#import "AppDelegate.h"
 #import <NSURL+Query.h>
 #import "OLInstagramImagePickerConstants.h"
 #import <NXOAuth2Client/NXOAuth2.h>
