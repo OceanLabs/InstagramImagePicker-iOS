@@ -29,7 +29,7 @@
 		CD9621A3185B7937007FFBE6 /* OLInstagramImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9621A2185B7937007FFBE6 /* OLInstagramImagePickerCell.m */; };
 		CD9621A7185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9621A5185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib */; };
 		CD9621A8185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9621A6185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib */; };
-		CD99CB5A185CF6060099A29A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD99CB59185CF6060099A29A /* Images.xcassets */; };
+		CD99CB5A185CF6060099A29A /* InstagramImagePicker.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD99CB59185CF6060099A29A /* InstagramImagePicker.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +77,7 @@
 		CD9621A2185B7937007FFBE6 /* OLInstagramImagePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLInstagramImagePickerCell.m; sourceTree = "<group>"; };
 		CD9621A5185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OLInstagramImagePickerViewController.xib; sourceTree = "<group>"; };
 		CD9621A6185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OLInstagramLoginWebViewController.xib; sourceTree = "<group>"; };
-		CD99CB59185CF6060099A29A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CD99CB59185CF6060099A29A /* InstagramImagePicker.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = InstagramImagePicker.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +171,7 @@
 		CD96215F185B77BF007FFBE6 /* InstagramImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				CD99CB59185CF6060099A29A /* Images.xcassets */,
+				CD99CB59185CF6060099A29A /* InstagramImagePicker.xcassets */,
 				CD9621A0185B792C007FFBE6 /* View */,
 				CD962196185B791E007FFBE6 /* Model */,
 				CD962195185B783E007FFBE6 /* Controller */,
@@ -338,7 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD962164185B77BF007FFBE6 /* InfoPlist.strings in Resources */,
-				CD99CB5A185CF6060099A29A /* Images.xcassets in Resources */,
+				CD99CB5A185CF6060099A29A /* InstagramImagePicker.xcassets in Resources */,
 				CD9621A8185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib in Resources */,
 				CD9621A7185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib in Resources */,
 				CD96216D185B77BF007FFBE6 /* Main.storyboard in Resources */,
