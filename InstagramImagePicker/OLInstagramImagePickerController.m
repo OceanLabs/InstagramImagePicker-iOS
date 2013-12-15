@@ -7,13 +7,13 @@
 //
 
 #import "OLInstagramImagePickerController.h"
-#import "AppDelegate.h"
 #import "OLInstagramMediaRequest.h"
 #import "OLInstagramImage.h"
-#import <UIImageView+FadeIn.h>
 #import "OLInstagramImagePickerCell.h"
 #import "OLInstagramLoginWebViewController.h"
 #import "OLInstagramImagePickerConstants.h"
+
+#import <UIImageView+FadeIn.h>
 #import <NXOAuth2.h>
 
 static const BOOL kDebugForceLogin = YES; // if YES then the user will always be presented with the login view controller first regardless of their authentication state
