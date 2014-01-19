@@ -21,7 +21,7 @@ static const BOOL kDebugForceLogin = NO; // if YES then the user will always be 
 static NSString *const kSupplementaryViewFooterReuseIdentifier = @"co.oceanlabs.ps.kSupplementaryViewHeaderReuseIdentifier";
 static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImagePickerCellReuseIdentifier";
 
-@interface SupplementaryView : UICollectionReusableView
+@interface InstagramSupplementaryView : UICollectionReusableView
 @end
 
 @interface OLInstagramImagePickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -72,7 +72,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     self.collectionView.collectionViewLayout = layout;
     self.collectionView.allowsMultipleSelection = YES;
     
-    [self.collectionView registerClass:[SupplementaryView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kSupplementaryViewFooterReuseIdentifier];
+    [self.collectionView registerClass:[InstagramSupplementaryView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kSupplementaryViewFooterReuseIdentifier];
     [self.collectionView registerClass:[OLInstagramImagePickerCell class] forCellWithReuseIdentifier:kImagePickerCellReuseIdentifier];
     
     if (self.startImageLoadingOnViewDidLoad) {
@@ -216,7 +216,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    SupplementaryView *v = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kSupplementaryViewFooterReuseIdentifier forIndexPath:indexPath];
+    InstagramSupplementaryView *v = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kSupplementaryViewFooterReuseIdentifier forIndexPath:indexPath];
     return v;
 }
 
@@ -232,7 +232,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 
 #pragma mark - SupplementaryView
 
-@implementation SupplementaryView
+@implementation InstagramSupplementaryView
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
