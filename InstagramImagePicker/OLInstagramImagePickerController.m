@@ -18,8 +18,8 @@
 
 static const BOOL kDebugForceLogin = NO; // if YES then the user will always be presented with the login view controller first regardless of their authentication state
 
-static NSString *kSupplementaryViewFooterReuseIdentifier = @"co.oceanlabs.ps.kSupplementaryViewHeaderReuseIdentifier";
-static NSString *kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImagePickerCellReuseIdentifier";
+static NSString *const kSupplementaryViewFooterReuseIdentifier = @"co.oceanlabs.ps.kSupplementaryViewHeaderReuseIdentifier";
+static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImagePickerCellReuseIdentifier";
 
 @interface SupplementaryView : UICollectionReusableView
 @end
@@ -29,7 +29,7 @@ static NSString *kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImagePicke
 @property (nonatomic, strong) NSMutableArray/*<OLInstagramImage>*/ *selectedImagesInFuturePages; // selected images that don't yet occur in collectionView.indexPathsForSelectedItems as the user needs to load more instagram pages first
 @property (nonatomic, assign) BOOL startImageLoadingOnViewDidLoad;
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, weak) IBOutlet UILabel *loadingLabel;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (nonatomic, strong) NSMutableArray *media;
 @property (nonatomic, strong) OLInstagramMediaRequest *inProgressMediaRequest;
 @property (nonatomic, strong) OLInstagramMediaRequest *nextMediaRequest;
@@ -91,7 +91,7 @@ static NSString *kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImagePicke
 }
 
 - (void)startImageLoading {
-    self.loadingLabel.hidden = NO;
+    self.loadingIndicator.hidden = NO;
     self.media = [[NSMutableArray alloc] init];
     self.nextMediaRequest = [[OLInstagramMediaRequest alloc] init];
     self.overflowMedia = @[];
@@ -105,7 +105,7 @@ static NSString *kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImagePicke
     [self.inProgressMediaRequest fetchMediaWithCompletionHandler:^(NSError *error, NSArray *media, OLInstagramMediaRequest *nextRequest) {
         self.inProgressMediaRequest = nil;
         self.nextMediaRequest = nextRequest;
-        self.loadingLabel.hidden = YES;
+        self.loadingIndicator.hidden = YES;
         
         if (error) {
             // clear all accounts and redo login...
