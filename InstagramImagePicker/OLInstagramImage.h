@@ -12,7 +12,7 @@
 /**
  The OLInstagramImage class provides a simple model object representation of an Instagram image.
  */
-@interface OLInstagramImage : NSObject
+@interface OLInstagramImage : NSObject <NSCoding, NSCopying>
 
 /**
  Initialises a new OLInstagramImage object instance.
