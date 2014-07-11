@@ -66,8 +66,8 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     UICollectionViewFlowLayout *layout  = [[UICollectionViewFlowLayout alloc] init];
     layout.itemSize                     = CGSizeMake(78, 78);
     layout.sectionInset                 = UIEdgeInsetsMake(9.0, 0, 0, 0);
-    layout.minimumInteritemSpacing      = 2.0;
-    layout.minimumLineSpacing           = 2.0;
+    layout.minimumInteritemSpacing      = 0;
+    layout.minimumLineSpacing           = 0;
     layout.footerReferenceSize          = CGSizeMake(0, 0);    self.collectionView.collectionViewLayout = layout;
     self.collectionView.allowsMultipleSelection = YES;
     
