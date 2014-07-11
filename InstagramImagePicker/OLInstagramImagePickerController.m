@@ -24,7 +24,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 @interface InstagramSupplementaryView : UICollectionReusableView
 @end
 
-@interface OLInstagramImagePickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface OLInstagramImagePickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) NSArray/*<OLInstagramImage>*/ *selected;
 @property (nonatomic, strong) NSMutableArray/*<OLInstagramImage>*/ *selectedImagesInFuturePages; // selected images that don't yet occur in collectionView.indexPathsForSelectedItems as the user needs to load more instagram pages first
 @property (nonatomic, assign) BOOL startImageLoadingOnViewDidLoad;
@@ -37,7 +37,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 - (void)startImageLoading;
 @end
 
-@interface OLInstagramImagePickerController () <OLInstagramLoginWebViewControllerDelegate>
+@interface OLInstagramImagePickerController () <OLInstagramLoginWebViewControllerDelegate, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) OLInstagramLoginWebViewController *loginVC;
 @property (nonatomic, strong) OLInstagramImagePickerViewController *imagePickerVC;
 
@@ -68,8 +68,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     layout.sectionInset                 = UIEdgeInsetsMake(9.0, 0, 0, 0);
     layout.minimumInteritemSpacing      = 2.0;
     layout.minimumLineSpacing           = 2.0;
-    layout.footerReferenceSize          = CGSizeMake(0, 0);
-    self.collectionView.collectionViewLayout = layout;
+    layout.footerReferenceSize          = CGSizeMake(0, 0);    self.collectionView.collectionViewLayout = layout;
     self.collectionView.allowsMultipleSelection = YES;
     
     [self.collectionView registerClass:[InstagramSupplementaryView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kSupplementaryViewFooterReuseIdentifier];
@@ -97,6 +96,16 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     self.overflowMedia = @[];
     [self.collectionView reloadData];
     [self loadNextPage];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.item % 3 == 1) {
+        return CGSizeMake(108, 106);
+    } else {
+        return CGSizeMake(106, 106);
+    }
 }
 
 - (void)loadNextPage {
@@ -353,6 +362,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
                          [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:NO];
                      }];
 }
+
 
 #pragma mark - Instagram Oauth notification callbacks
 
