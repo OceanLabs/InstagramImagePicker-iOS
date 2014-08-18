@@ -264,7 +264,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
                                                  secret:secret
                                        authorizationURL:[NSURL URLWithString:@"https://api.instagram.com/oauth/authorize"]
                                                tokenURL:[NSURL URLWithString:@"https://api.instagram.com/oauth/access_token/"]
-                                            redirectURL:[NSURL URLWithString:@"psapp://instagram-callback"]
+                                            redirectURL:[NSURL URLWithString:@"pmapp://instagram-callback"]
                                          forAccountType:@"instagram"];
     }
     

@@ -68,7 +68,7 @@
 #pragma mark - UIWebViewDelegate methods
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    if ([request.URL.scheme isEqualToString:@"psapp"]) {
+    if ([request.URL.scheme isEqualToString:@"pmapp"]) {
         [self.webView stopLoading];
         BOOL handled = [[NXOAuth2AccountStore sharedStore] handleRedirectURL:request.URL];
         if (!handled) {
