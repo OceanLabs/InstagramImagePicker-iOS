@@ -35,6 +35,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 @property (nonatomic, strong) OLInstagramMediaRequest *nextMediaRequest;
 @property (nonatomic, strong) NSArray *overflowMedia; // We can only insert multiples of 4 images each request, overflow must be saved and inserted on a subsequent request.
 - (void)startImageLoading;
+@property BOOL allowsMultiple;
 @end
 
 @interface OLInstagramImagePickerController () <OLInstagramLoginWebViewControllerDelegate>
@@ -52,6 +53,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
         self.media = [[NSMutableArray alloc] init];
         self.selectedImagesInFuturePages = [[NSMutableArray alloc] init];
         self.overflowMedia = @[];
+        
     }
     
     return self;
@@ -70,7 +72,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     layout.minimumLineSpacing           = 2.0;
     layout.footerReferenceSize          = CGSizeMake(0, 0);
     self.collectionView.collectionViewLayout = layout;
-    self.collectionView.allowsMultipleSelection = NO;
+    self.collectionView.allowsMultipleSelection = self.allowsMultiple;
     
     [self.collectionView registerClass:[InstagramSupplementaryView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kSupplementaryViewFooterReuseIdentifier];
     [self.collectionView registerClass:[OLInstagramImagePickerCell class] forCellWithReuseIdentifier:kImagePickerCellReuseIdentifier];
@@ -78,7 +80,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     if (self.startImageLoadingOnViewDidLoad) {
         [self startImageLoading];
     }
-
+    
     // Hide the back button and set custom title view that looks the same as the default. The reason for this is because by default
     // when this view is pushed onto the navigation stack these items would animate, we actually don't want that behaviour as our
     // push view controller transition is a flip of the screen.
@@ -158,7 +160,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
             }
         }
         [self.selectedImagesInFuturePages removeObjectsInArray:selectedItemsInThisPage];
-
+        
     }];
 }
 
@@ -186,7 +188,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     for (NSIndexPath *path in self.collectionView.indexPathsForSelectedItems) {
         [self.collectionView deselectItemAtIndexPath:path animated:NO];
     }
-
+    
     // select any items in the collection view as appropriate, any items that have yet to be downloaded (due to the user not scrolling far enough)
     // are stored for selecting later when we fetch future pages.
     NSMutableArray *selectedImagesInFuturePages = [[NSMutableArray alloc] init];
@@ -259,6 +261,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 
 - (id)initWithClientId:(NSString *)clientId secret:(NSString *)secret {
     static BOOL doneInit = NO;
+    self.allowsMultiple = NO;
     if (!doneInit) {
         [[NXOAuth2AccountStore sharedStore] setClientID:clientId
                                                  secret:secret
@@ -280,6 +283,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     OLInstagramLoginWebViewController *loginVC = [[OLInstagramLoginWebViewController alloc] init];
     OLInstagramImagePickerViewController *imagePickerVC = [[OLInstagramImagePickerViewController alloc] init];
     
+    
     UIViewController *openingController = nil;
     if (instagramAccounts.count == 0) {
         // user needs to login
@@ -288,11 +292,60 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
         // user has logged in so jump directly to photos
         openingController = imagePickerVC;
         imagePickerVC.startImageLoadingOnViewDidLoad = YES;
+        imagePickerVC.allowsMultiple = YES;
     }
     
     if (self = [super initWithRootViewController:openingController]) {
         [self addInstagramLoginObservers];
         self.loginVC = loginVC;
+        imagePickerVC.allowsMultiple = self.allowsMultiple;
+        self.imagePickerVC = imagePickerVC;
+        self.loginVC.delegate = self;
+    }
+    
+    return self;
+}
+
+- (id)initWithClientId:(NSString *)clientId secret:(NSString *)secret allowsMultiple:(BOOL)multiple {
+    static BOOL doneInit = NO;
+    self.allowsMultiple = multiple;
+    if (!doneInit) {
+        [[NXOAuth2AccountStore sharedStore] setClientID:clientId
+                                                 secret:secret
+                                       authorizationURL:[NSURL URLWithString:@"https://api.instagram.com/oauth/authorize"]
+                                               tokenURL:[NSURL URLWithString:@"https://api.instagram.com/oauth/access_token/"]
+                                            redirectURL:[NSURL URLWithString:@"pmapp://instagram-callback"]
+                                         forAccountType:@"instagram"];
+    }
+    
+    NSArray *instagramAccounts = [[NXOAuth2AccountStore sharedStore] accountsWithAccountType:@"instagram"];
+    if (kDebugForceLogin) {
+        for (NXOAuth2Account *account in instagramAccounts) {
+            [[NXOAuth2AccountStore sharedStore] removeAccount:account];
+        }
+        
+        instagramAccounts = @[];
+    }
+    
+    OLInstagramLoginWebViewController *loginVC = [[OLInstagramLoginWebViewController alloc] init];
+    OLInstagramImagePickerViewController *imagePickerVC = [[OLInstagramImagePickerViewController alloc] init];
+    
+    
+    UIViewController *openingController = nil;
+    if (instagramAccounts.count == 0) {
+        // user needs to login
+        openingController = loginVC;
+    } else {
+        // user has logged in so jump directly to photos
+        openingController = imagePickerVC;
+        imagePickerVC.startImageLoadingOnViewDidLoad = YES;
+        imagePickerVC.allowsMultiple = YES;
+    }
+    
+    if (self = [super initWithRootViewController:openingController]) {
+        [self addInstagramLoginObservers];
+        self.loginVC = loginVC;
+        imagePickerVC.allowsMultiple = self.allowsMultiple;
         self.imagePickerVC = imagePickerVC;
         self.loginVC.delegate = self;
     }

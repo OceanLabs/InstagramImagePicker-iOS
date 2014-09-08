@@ -11,7 +11,7 @@
 @class OLInstagramImagePickerController;
 
 /**
- The OLInstagramImagePickerControllerDelegate protocol defines methods that your delegate object must implement to interact with the image picker interface. 
+ The OLInstagramImagePickerControllerDelegate protocol defines methods that your delegate object must implement to interact with the image picker interface.
  The methods of this protocol notify your delegate when the user completes picking, cancels the picker operation or if an error arises (i.e. due to network
  connectivity issues, etc).
  */
@@ -41,17 +41,17 @@
 - (void)instagramImagePickerDidCancelPickingImages:(OLInstagramImagePickerController *)imagePicker;
 @end
 
-/** 
+/**
  The OLInstagramImagePickerController class provides a simple UI for a user to pick photos from their Instagram account. It
  provides an image picker interface that matches the iOS SDK's UIIMagePickerController. It takes care of all
- authentication (via OAuth2) with Instagram as and when necessary. It will automatically renew auth tokens or prompt 
+ authentication (via OAuth2) with Instagram as and when necessary. It will automatically renew auth tokens or prompt
  the user to re-authorize the app if needed.
  */
 @interface OLInstagramImagePickerController : UINavigationController
 
-/** 
+/**
  Initialises a new OLInstagramImagePickerController object instance. The underlying Instagram API requests will be made using
- the supplied client id & secret. You can find these details (or register a new client) at 
+ the supplied client id & secret. You can find these details (or register a new client) at
  http://instagram.com/developer/clients/manage/ .
  
  @param clientId Your Instagram client id found
@@ -59,12 +59,12 @@
  @return Returns an initialised instance of OLInstagramImagePickerController
  */
 - (id)initWithClientId:(NSString *)clientId secret:(NSString *)secret;
-
+- (id)initWithClientId:(NSString *)clientId secret:(NSString *)secret allowsMultiple:(BOOL)multiple;
 /**
  Holds the currently user selected images in the picker UI. Setting this property will result in the corresponding images in the picker UI updating.
  */
 @property (nonatomic, copy) NSArray/*<OLInstagramImage>*/ *selected;
-
+@property BOOL allowsMultiple;
 /**
  The image picker’s delegate object.
  */
