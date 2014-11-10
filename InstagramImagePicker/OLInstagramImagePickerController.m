@@ -204,6 +204,33 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     self.selectedImagesInFuturePages = selectedImagesInFuturePages;
 }
 
++ (UIViewController*) topMostController
+{
+    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+    
+    return topController;
+}
+
+-(void) updateTitleWithSelectedIndexPaths:(NSArray *)indexPaths{
+    // Reset title to group name
+    if (indexPaths.count == 0)
+    {
+        self.parentViewController.title = NSLocalizedString(@"Add Photos", @"");
+        return;
+    }
+    
+    OLInstagramImagePickerController *vc = (OLInstagramImagePickerController *)self.navigationController;
+    NSString *format = (indexPaths.count > 1) ? NSLocalizedString(@"%ld of %ld Photos Selected", nil) : NSLocalizedString(@"%ld of %ld Photo Selected", nil);
+    
+    self.title = vc.maximumNumberOfSelection == 0 ? [NSString stringWithFormat:format, (long)indexPaths.count] : [NSString stringWithFormat:format, (long)indexPaths.count, vc.maximumNumberOfSelection];
+     ((UILabel *)self.navigationItem.titleView).text= self.title;
+    [((UILabel *)self.navigationItem.titleView) sizeToFit];
+}
+
 #pragma mark - UICollectionViewDataSource methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -228,6 +255,22 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
         // we've reached the bottom, lets load the next page of instagram images.
         [self loadNextPage];
     }
+}
+
+-(BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    OLInstagramImage *image = self.media[indexPath.row];
+    
+    OLInstagramImagePickerController *vc = (OLInstagramImagePickerController *)self.navigationController;
+    
+    return collectionView.indexPathsForSelectedItems.count < vc.maximumNumberOfSelection;
+}
+
+-(void) collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self updateTitleWithSelectedIndexPaths:collectionView.indexPathsForSelectedItems];
+}
+
+-(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self updateTitleWithSelectedIndexPaths:collectionView.indexPathsForSelectedItems];
 }
 
 @end
