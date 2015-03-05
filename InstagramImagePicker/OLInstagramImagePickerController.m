@@ -308,14 +308,14 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     return nil;
 }
 
-- (id)initWithClientId:(NSString *)clientId secret:(NSString *)secret {
+- (id)initWithClientId:(NSString *)clientId secret:(NSString *)secret URI:(NSString *)URI{
     static BOOL doneInit = NO;
     if (!doneInit) {
         [[NXOAuth2AccountStore sharedStore] setClientID:clientId
                                                  secret:secret
                                        authorizationURL:[NSURL URLWithString:@"https://api.instagram.com/oauth/authorize"]
                                                tokenURL:[NSURL URLWithString:@"https://api.instagram.com/oauth/access_token/"]
-                                            redirectURL:[NSURL URLWithString:@"psapp://instagram-callback"]
+                                            redirectURL:[NSURL URLWithString:[URI stringByAppendingString:@"://instagram-callback"]]
                                          forAccountType:@"instagram"];
     }
     
@@ -329,6 +329,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     }
     
     OLInstagramLoginWebViewController *loginVC = [[OLInstagramLoginWebViewController alloc] init];
+    loginVC.URI = URI;
     OLInstagramImagePickerViewController *imagePickerVC = [[OLInstagramImagePickerViewController alloc] init];
     
     UIViewController *openingController = nil;

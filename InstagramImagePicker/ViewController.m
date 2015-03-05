@@ -17,7 +17,7 @@
 @implementation ViewController
 
 - (IBAction)onShowInstagramImagePickerClicked:(id)sender {
-    OLInstagramImagePickerController *imagePicker = [[OLInstagramImagePickerController alloc] initWithClientId:@"aa314a392fdd4de7aa287a6614ea8897" secret:@"849dd820b3a34ca9ba3edab8ad2cf7c5"];
+    OLInstagramImagePickerController *imagePicker = [[OLInstagramImagePickerController alloc] initWithClientId:@"aa314a392fdd4de7aa287a6614ea8897" secret:@"849dd820b3a34ca9ba3edab8ad2cf7c5" URI:@"psapp"];
     imagePicker.delegate = self;
     imagePicker.selected = self.selectedImages;
     [self presentViewController:imagePicker animated:YES completion:nil];
