@@ -62,6 +62,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     
     self.title = NSLocalizedString(@"Add Photos", @"");
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"") style:UIBarButtonItemStylePlain target:self action:@selector(onButtonDoneClicked)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout", @"") style:UIBarButtonItemStylePlain target:self action:@selector(onButtonLogoutClicked)];
     
     CGFloat itemSize = [UIScreen mainScreen].bounds.size.width/4.0 - 1.0;
     
@@ -160,8 +161,24 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
             }
         }
         [self.selectedImagesInFuturePages removeObjectsInArray:selectedItemsInThisPage];
-
     }];
+}
+
+- (void)onButtonLogoutClicked {
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [storage cookies]) {
+        if ([cookie.domain containsString:@"instagram.com"]) {
+            [storage deleteCookie:cookie];
+        }
+    }
+    
+    NSArray *instagramAccounts = [[NXOAuth2AccountStore sharedStore] accountsWithAccountType:@"instagram"];
+    for (NXOAuth2Account *account in instagramAccounts) {
+        [[NXOAuth2AccountStore sharedStore] removeAccount:account];
+    }
+    
+    [((OLInstagramImagePickerController *) self.navigationController) flipToInstagramLoginController];
 }
 
 - (void)onButtonDoneClicked {
@@ -308,14 +325,14 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     return nil;
 }
 
-- (id)initWithClientId:(NSString *)clientId secret:(NSString *)secret URI:(NSString *)URI{
+- (id)initWithClientId:(NSString *)clientId secret:(NSString *)secret redirectURI:(NSString *)redirectURI {
     static BOOL doneInit = NO;
     if (!doneInit) {
         [[NXOAuth2AccountStore sharedStore] setClientID:clientId
                                                  secret:secret
                                        authorizationURL:[NSURL URLWithString:@"https://api.instagram.com/oauth/authorize"]
                                                tokenURL:[NSURL URLWithString:@"https://api.instagram.com/oauth/access_token/"]
-                                            redirectURL:[NSURL URLWithString:[URI stringByAppendingString:@"://instagram-callback"]]
+                                            redirectURL:[NSURL URLWithString:redirectURI]
                                          forAccountType:@"instagram"];
     }
     
@@ -329,7 +346,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     }
     
     OLInstagramLoginWebViewController *loginVC = [[OLInstagramLoginWebViewController alloc] init];
-    loginVC.URI = URI;
+    loginVC.redirectURI = redirectURI;
     OLInstagramImagePickerViewController *imagePickerVC = [[OLInstagramImagePickerViewController alloc] init];
     
     UIViewController *openingController = nil;

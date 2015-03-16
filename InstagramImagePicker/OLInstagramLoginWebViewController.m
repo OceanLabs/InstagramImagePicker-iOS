@@ -68,7 +68,7 @@
 #pragma mark - UIWebViewDelegate methods
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    if ([request.URL.scheme isEqualToString:self.URI]) {
+    if ([request.URL.absoluteString hasPrefix:self.redirectURI]) {
         [self.webView stopLoading];
         BOOL handled = [[NXOAuth2AccountStore sharedStore] handleRedirectURL:request.URL];
         if (!handled) {

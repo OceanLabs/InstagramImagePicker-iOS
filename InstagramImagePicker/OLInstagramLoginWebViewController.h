@@ -18,6 +18,6 @@
 
 @interface OLInstagramLoginWebViewController : UIViewController
 @property (nonatomic, weak) id<OLInstagramLoginWebViewControllerDelegate> delegate;
-@property (strong, nonatomic) NSString *URI;
+@property (strong, nonatomic) NSString *redirectURI;
 - (void)startAuthenticatingUser;
 @end

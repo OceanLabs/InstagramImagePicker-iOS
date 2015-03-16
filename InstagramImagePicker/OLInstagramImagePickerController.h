@@ -56,10 +56,10 @@
  
  @param clientId Your Instagram client id found
  @param secret The associated secret for the clientId
- @param URI The url scheme of the app
+ @param redirectURI The redirect uri scheme of the app
  @return Returns an initialised instance of OLInstagramImagePickerController
  */
-- (id)initWithClientId:(NSString *)clientId secret:(NSString *)secret URI:(NSString *)URI;
+- (id)initWithClientId:(NSString *)clientId secret:(NSString *)secret redirectURI:(NSString *)URI;
 
 /**
  Holds the currently user selected images in the picker UI. Setting this property will result in the corresponding images in the picker UI updating.
