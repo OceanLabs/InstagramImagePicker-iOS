@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '5.0'
   s.requires_arc = true
   s.source = {
-    :git => 'git@github.com:OceanLabs/InstagramImagePicker-iOS.git',
+    :git => 'https://github.com/OceanLabs/InstagramImagePicker-iOS.git',
     :tag => '1.0.5'
   }
   s.source_files = ['InstagramImagePicker/OL*.{h,m}', 'InstagramImagePicker/UIImageView+InstagramFadeIn.{h,m}']
