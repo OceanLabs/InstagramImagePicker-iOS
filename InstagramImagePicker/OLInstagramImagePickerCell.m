@@ -7,7 +7,7 @@
 //
 
 #import "OLInstagramImagePickerCell.h"
-#import <UIImageView+FadeIn.h>
+#import "UIImageView+InstagramFadeIn.h"
 #import "OLInstagramImage.h"
 #import <UIColor+HexString.h>
 
@@ -69,7 +69,7 @@ static UIColor *disabledColor;
 
 - (void)bind:(OLInstagramImage *)media {
     self.instagramMedia = media;
-    [self.imageView setAndFadeInImageWithURL:media.thumbURL];
+    [self.imageView setAndFadeInInstagramImageWithURL:media.thumbURL];
 }
 
 - (void)setSelected:(BOOL)selected {

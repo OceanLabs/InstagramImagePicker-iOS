@@ -7,7 +7,6 @@
 //
 
 #import "OLInstagramLoginWebViewController.h"
-#import <NSURL+Query.h>
 #import "OLInstagramImagePickerConstants.h"
 #import <NXOAuth2Client/NXOAuth2.h>
 
@@ -65,6 +64,20 @@
     [self.delegate instagramLoginWebViewControllerDidCancelLogIn:self];
 }
 
+- (NSString *)url:(NSURL *)url queryValueForName:(NSString *)name {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    for (NSString *param in [[url query] componentsSeparatedByString:@"&"]) {
+        NSArray *parts = [param componentsSeparatedByString:@"="];
+        if([parts count] < 2) {
+            continue;
+        }
+        
+        [params setObject:[parts objectAtIndex:1] forKey:[parts objectAtIndex:0]];
+    }
+    
+    return params[name];
+}
+
 #pragma mark - UIWebViewDelegate methods
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -73,9 +86,9 @@
         BOOL handled = [[NXOAuth2AccountStore sharedStore] handleRedirectURL:request.URL];
         if (!handled) {
             // Show the user a error message.
-            NSString *errorReason = [request.URL queryValueForName:@"error_reason"];
-            NSString *errorCode = [request.URL queryValueForName:@"error"];
-            NSString *errorDescription = [request.URL queryValueForName:@"error_description"];
+            NSString *errorReason = [self url:request.URL queryValueForName:@"error_reason"];
+            NSString *errorCode = [self url:request.URL queryValueForName:@"error"];
+            NSString *errorDescription = [self url:request.URL queryValueForName:@"error_description"];
             
             if ([errorCode isEqualToString:@"access_denied"] && [errorReason isEqualToString:@"user_denied"]) {
                 errorDescription = NSLocalizedString(@"You need to authorize the app to access your Instagram account if you want to import photos from there.", @"");
