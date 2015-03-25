@@ -279,9 +279,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     }
 }
 
--(BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    OLInstagramImage *image = self.media[indexPath.row];
-    
+-(BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{    
     OLInstagramImagePickerController *vc = (OLInstagramImagePickerController *)self.navigationController;
     
     return collectionView.indexPathsForSelectedItems.count < vc.maximumNumberOfSelection || vc.maximumNumberOfSelection == 0;
