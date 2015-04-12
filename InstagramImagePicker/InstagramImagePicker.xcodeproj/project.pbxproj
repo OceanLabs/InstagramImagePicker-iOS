@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		33E890773771409A97774620 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3607167860844571B2FA302D /* libPods.a */; };
 		3D0D7AC61AC070F300746FC8 /* UIImageView+InstagramFadeIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D7AC51AC070F300746FC8 /* UIImageView+InstagramFadeIn.m */; };
+		3D9DE3B01ADB1F2B001E1FA1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9DE3AF1ADB1F2B001E1FA1 /* Default-568h@2x.png */; };
 		CD96215A185B77BF007FFBE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD962159185B77BF007FFBE6 /* Foundation.framework */; };
 		CD96215C185B77BF007FFBE6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD96215B185B77BF007FFBE6 /* CoreGraphics.framework */; };
 		CD96215E185B77BF007FFBE6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD96215D185B77BF007FFBE6 /* UIKit.framework */; };
@@ -48,6 +49,7 @@
 		3607167860844571B2FA302D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D0D7AC41AC070F300746FC8 /* UIImageView+InstagramFadeIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+InstagramFadeIn.h"; sourceTree = "<group>"; };
 		3D0D7AC51AC070F300746FC8 /* UIImageView+InstagramFadeIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+InstagramFadeIn.m"; sourceTree = "<group>"; };
+		3D9DE3AF1ADB1F2B001E1FA1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CD962156185B77BF007FFBE6 /* InstagramImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD962159185B77BF007FFBE6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD96215B185B77BF007FFBE6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -144,7 +146,7 @@
 		CD96214D185B77BF007FFBE6 = {
 			isa = PBXGroup;
 			children = (
-				CD96218E185B77D8007FFBE6 /* Example */,
+				CD96218E185B77D8007FFBE6 /* Sample App */,
 				CD96215F185B77BF007FFBE6 /* InstagramImagePicker */,
 				CD96217E185B77BF007FFBE6 /* InstagramImagePickerTests */,
 				CD962158185B77BF007FFBE6 /* Frameworks */,
@@ -215,9 +217,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CD96218E185B77D8007FFBE6 /* Example */ = {
+		CD96218E185B77D8007FFBE6 /* Sample App */ = {
 			isa = PBXGroup;
 			children = (
+				3D9DE3AF1ADB1F2B001E1FA1 /* Default-568h@2x.png */,
 				CD962168185B77BF007FFBE6 /* AppDelegate.h */,
 				CD962169185B77BF007FFBE6 /* AppDelegate.m */,
 				CD96216B185B77BF007FFBE6 /* Main.storyboard */,
@@ -225,7 +228,7 @@
 				CD96216F185B77BF007FFBE6 /* ViewController.m */,
 				CD962160185B77BF007FFBE6 /* Supporting Files */,
 			);
-			name = Example;
+			name = "Sample App";
 			sourceTree = "<group>";
 		};
 		CD962195185B783E007FFBE6 /* Controller */ = {
@@ -320,7 +323,7 @@
 		CD96214E185B77BF007FFBE6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Deon Botha";
 				TargetAttributes = {
 					CD962176185B77BF007FFBE6 = {
@@ -357,6 +360,7 @@
 				CD9621A8185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib in Resources */,
 				CD9621A7185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib in Resources */,
 				CD96216D185B77BF007FFBE6 /* Main.storyboard in Resources */,
+				3D9DE3B01ADB1F2B001E1FA1 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,7 +476,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -511,7 +514,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -567,7 +569,6 @@
 		CD96218C185B77BF007FFBE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/InstagramImagePicker.app/InstagramImagePicker";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -590,7 +591,6 @@
 		CD96218D185B77BF007FFBE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/InstagramImagePicker.app/InstagramImagePicker";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

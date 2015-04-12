@@ -22,6 +22,7 @@
     
     self.alpha = 0;
     __weak UIImageView *weakImageView = self;
+    
     [self setImageWithURL:url placeholderImage:placeholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
         struct timeval t;
         gettimeofday(&t, NULL);

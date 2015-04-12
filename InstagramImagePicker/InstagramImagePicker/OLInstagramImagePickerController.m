@@ -239,16 +239,9 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
         return;
     }
     
-    OLInstagramImagePickerController *vc = (OLInstagramImagePickerController *)self.navigationController;
-    NSString *format;
-    if (vc.maximumNumberOfSelection > 0){
-        format = (indexPaths.count > 1) ? NSLocalizedString(@"%ld of %ld Photos Selected", nil) : NSLocalizedString(@"%ld of %ld Photo Selected", nil);
-    }
-    else{
-        format = (indexPaths.count > 1) ? NSLocalizedString(@"%ld Photos Selected", nil) : NSLocalizedString(@"%ld Photo Selected", nil);
-    }
+    NSString *format = (indexPaths.count > 1) ? NSLocalizedString(@"%ld Photos Selected", nil) : NSLocalizedString(@"%ld Photo Selected", nil);
     
-    self.title = vc.maximumNumberOfSelection == 0 ? [NSString stringWithFormat:format, (long)indexPaths.count] : [NSString stringWithFormat:format, (long)indexPaths.count, vc.maximumNumberOfSelection];
+    self.title = [NSString stringWithFormat:format, (unsigned long) indexPaths.count];
      ((UILabel *)self.navigationItem.titleView).text= self.title;
     [((UILabel *)self.navigationItem.titleView) sizeToFit];
 }
@@ -277,14 +270,6 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
         // we've reached the bottom, lets load the next page of instagram images.
         [self loadNextPage];
     }
-}
-
--(BOOL) collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    OLInstagramImage *image = self.media[indexPath.row];
-    
-    OLInstagramImagePickerController *vc = (OLInstagramImagePickerController *)self.navigationController;
-    
-    return collectionView.indexPathsForSelectedItems.count < vc.maximumNumberOfSelection || vc.maximumNumberOfSelection == 0;
 }
 
 -(void) collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -318,6 +303,8 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 #pragma mark - OLInstagramImagePickerController implementation
 
 @implementation OLInstagramImagePickerController
+
+@dynamic delegate;
 
 - (id)init {
     NSAssert(NO, @"Please use OLInstagramImagePickerController initWithClientId:secret");

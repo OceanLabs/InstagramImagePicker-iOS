@@ -7,12 +7,12 @@ PODS:
 
 DEPENDENCIES:
   - NXOAuth2Client (~> 1.2.8)
-  - SDWebImage
+  - SDWebImage (~> 3.7.2)
   - UIColor-HexString
 
 SPEC CHECKSUMS:
-  NXOAuth2Client: fa81be68c9ce628202028ae037c9c92cfbb37865
+  NXOAuth2Client: 98c4d4c594edd2b289cfc34a8928653e1dab7adf
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
-  UIColor-HexString: a9eabf02c1a2f9036ed6ac9cb2a3ea086f3b39e4
+  UIColor-HexString: f8a5612bd6772fed8db58ee594b42a0b2831750e
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.3
