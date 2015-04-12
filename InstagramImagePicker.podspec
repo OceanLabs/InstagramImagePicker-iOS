@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name         = 'InstagramImagePicker'
   s.version      = '1.0.6'
   s.license      = 'MIT'
-  s.summary      = ''An image/photo picker for Instagram photos modelled after UIImagePickerController'
+  s.summary      = 'An image/photo picker for Instagram photos modelled after UIImagePickerController'
   s.author       = { "Deon Botha" => "deon@oceanlabs.co" }
   s.social_media_url = 'https://twitter.com/dbotha'
   s.homepage     = 'https://github.com/OceanLabs/InstagramImagePicker-iOS'
