@@ -166,7 +166,8 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 - (void)onButtonLogoutClicked {
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (cookie in [storage cookies]) {
+    NSArray *cookies = [NSArray arrayWithArray:[storage cookies]];
+    for (cookie in cookies) {
         if ([cookie.domain containsString:@"instagram.com"]) {
             [storage deleteCookie:cookie];
         }
