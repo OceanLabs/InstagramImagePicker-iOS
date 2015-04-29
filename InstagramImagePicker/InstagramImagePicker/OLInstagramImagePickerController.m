@@ -63,7 +63,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"") style:UIBarButtonItemStylePlain target:self action:@selector(onButtonDoneClicked)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout", @"") style:UIBarButtonItemStylePlain target:self action:@selector(onButtonLogoutClicked)];
     
-    CGFloat itemSize = [UIScreen mainScreen].bounds.size.width/4.0 - 1.0;
+    CGFloat itemSize = MIN([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width)/4.0 - 1.0;
     
     UICollectionViewFlowLayout *layout  = [[UICollectionViewFlowLayout alloc] init];
     layout.itemSize                     = CGSizeMake(itemSize, itemSize);
@@ -362,14 +362,6 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 
 - (NSArray *)selected {
     return self.imagePickerVC.selected;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    return toInterfaceOrientation == UIInterfaceOrientationPortrait;
-}
-
-- (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (BOOL)isShowingLoginController {
