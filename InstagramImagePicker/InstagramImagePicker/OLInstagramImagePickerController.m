@@ -236,7 +236,9 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     // Reset title to group name
     if (indexPaths.count == 0)
     {
-        self.parentViewController.title = NSLocalizedString(@"Add Photos", @"");
+        self.title = NSLocalizedString(@"Add Photos", @"");
+        ((UILabel *)self.navigationItem.titleView).text= self.title;
+        [((UILabel *)self.navigationItem.titleView) sizeToFit];
         return;
     }
     
