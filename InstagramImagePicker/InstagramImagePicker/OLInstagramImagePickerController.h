@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class OLInstagramImagePickerController;
+@class OLInstagramImage;
 
 /**
  The OLInstagramImagePickerControllerDelegate protocol defines methods that your delegate object must implement to interact with the image picker interface. 
@@ -39,6 +40,14 @@
  @param imagePicker The OLInstagramImagePickerController picker instance that you instantiated to facilitate the picking operation
  */
 - (void)instagramImagePickerDidCancelPickingImages:(OLInstagramImagePickerController *)imagePicker;
+
+@optional
+/**
+ Tells the delegate that the user did select an image
+ @param imagePicker The OLInstagramImagePickerController picker instance that you instantiated to facilitate the picking operation
+ @param image The OLInstagram image that was picked
+ */
+- (void)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker didSelectImage:(OLInstagramImage *)image;
 @end
 
 /** 

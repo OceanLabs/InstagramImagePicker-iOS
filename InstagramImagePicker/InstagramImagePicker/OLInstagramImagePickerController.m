@@ -279,6 +279,10 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self updateTitleWithSelectedIndexPaths:collectionView.indexPathsForSelectedItems];
+    OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
+    if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:didSelectImage:)]){
+        [picker.delegate instagramImagePicker:picker didSelectImage:[self.media objectAtIndex:indexPath.item]];
+    }
 }
 
 @end
