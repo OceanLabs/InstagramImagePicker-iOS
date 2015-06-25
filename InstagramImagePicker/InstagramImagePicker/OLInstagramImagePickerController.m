@@ -285,6 +285,17 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     }
 }
 
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self updateTitleWithSelectedIndexPaths:collectionView.indexPathsForSelectedItems];
+    OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
+    if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:shouldSelectImage:)]){
+         return [picker.delegate instagramImagePicker:picker shouldSelectImage:[self.media objectAtIndex:indexPath.item]];
+    }
+    else{
+        return YES;
+    }
+}
+
 @end
 
 #pragma mark - SupplementaryView

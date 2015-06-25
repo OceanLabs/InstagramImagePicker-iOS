@@ -48,6 +48,14 @@
  @param image The OLInstagram image that was picked
  */
 - (void)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker didSelectImage:(OLInstagramImage *)image;
+
+/**
+ Asks the delegate if an image should be selected
+ @param imagePicker The OLInstagramImagePickerController picker instance that you instantiated to facilitate the picking operation
+ @param image The OLInstagram image about to be selected
+ @return Returns whether or not the image should be selected
+ */
+- (BOOL)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker shouldSelectImage:(OLInstagramImage *)image;
 @end
 
 /** 
