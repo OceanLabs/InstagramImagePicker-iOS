@@ -4,6 +4,10 @@ A Instagram image picker providing a simple UI for a user to pick photos from a 
 
 It takes care of all authentication with Instagram as and when necessary. It will automatically renew auth tokens or prompt the user to re-authorize the app if needed. 
 
+## Video Preview
+
+[![Preview](https://github.com/OceanLabs/InstagramPhotoPicker-iOS/raw/master/preview.png)](https://vimeo.com/135683505)
+
 ## Requirements
 
 * Xcode 6 and iOS SDK 7
@@ -20,7 +24,7 @@ pod "InstagramImagePicker"
 
 ## Usage
 
-You need to have set up your application correctly to work with Instagram by registering a new Instagram application here: https://instagram.com/developer/ . For the redirect uri use something link `your-app-scheme://instagram-callback`.
+You need to have set up your application correctly to work with Instagram by registering a new Instagram application here: https://instagram.com/developer/ . For the redirect uri use something like `your-app-scheme://instagram-callback`.
 
 To launch the Instagram Image Picker:
 
