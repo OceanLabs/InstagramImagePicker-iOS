@@ -6,7 +6,7 @@ It takes care of all authentication with Instagram as and when necessary. It wil
 
 ## Video Preview
 
-[![Preview](https://github.com/OceanLabs/InstagramPhotoPicker-iOS/raw/master/preview.png)](https://vimeo.com/135683505)
+[![Preview](https://github.com/OceanLabs/InstagramImagePicker-iOS/raw/master/preview.png)](https://vimeo.com/135683505)
 
 ## Requirements
 
