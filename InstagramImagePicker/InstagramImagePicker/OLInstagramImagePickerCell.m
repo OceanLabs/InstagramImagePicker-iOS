@@ -9,7 +9,7 @@
 #import "OLInstagramImagePickerCell.h"
 #import "UIImageView+InstagramFadeIn.h"
 #import "OLInstagramImage.h"
-#import <UIColor+HexString.h>
+#import <UIColor-HexString/UIColor+HexString.h>
 
 #define kThumbnailLength    78.0f
 #define kThumbnailSize      CGSizeMake(kThumbnailLength, kThumbnailLength)
