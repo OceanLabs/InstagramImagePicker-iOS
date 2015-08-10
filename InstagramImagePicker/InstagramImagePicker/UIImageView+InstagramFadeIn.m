@@ -7,7 +7,7 @@
 //
 
 #import "UIImageView+InstagramFadeIn.h"
-#import <UIImageView+WebCache.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #include <sys/time.h>
 
 @implementation UIImageView (InstagramFadeIn)
