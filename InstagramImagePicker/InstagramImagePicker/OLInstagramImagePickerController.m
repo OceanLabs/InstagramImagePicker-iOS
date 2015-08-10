@@ -236,7 +236,9 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     // Reset title to group name
     if (indexPaths.count == 0)
     {
-        self.parentViewController.title = NSLocalizedString(@"Add Photos", @"");
+        self.title = NSLocalizedString(@"Add Photos", @"");
+        ((UILabel *)self.navigationItem.titleView).text= self.title;
+        [((UILabel *)self.navigationItem.titleView) sizeToFit];
         return;
     }
     
@@ -279,6 +281,21 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self updateTitleWithSelectedIndexPaths:collectionView.indexPathsForSelectedItems];
+    OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
+    if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:didSelectImage:)]){
+        [picker.delegate instagramImagePicker:picker didSelectImage:[self.media objectAtIndex:indexPath.item]];
+    }
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self updateTitleWithSelectedIndexPaths:collectionView.indexPathsForSelectedItems];
+    OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
+    if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:shouldSelectImage:)]){
+         return [picker.delegate instagramImagePicker:picker shouldSelectImage:[self.media objectAtIndex:indexPath.item]];
+    }
+    else{
+        return YES;
+    }
 }
 
 @end

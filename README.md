@@ -1,8 +1,8 @@
 # iOS Instagram Image Picker
 
-A Instagram image picker providing a simple UI for a user to pick photos from a users Instagram account. It provides an image picker interface that matches the iOS SDK's UIImagePickerController. 
+A Instagram image picker providing a simple UI for a user to pick photos from a users Instagram account. It provides an image picker interface that matches the iOS SDK's UIImagePickerController.
 
-It takes care of all authentication with Instagram as and when necessary. It will automatically renew auth tokens or prompt the user to re-authorize the app if needed. 
+It takes care of all authentication with Instagram as and when necessary. It will automatically renew auth tokens or prompt the user to re-authorize the app if needed.
 
 ## Video Preview
 
@@ -55,6 +55,17 @@ Implement the `OLInstagramImagePickerControllerDelegate` protocol:
 }
 
 ```
+
+**Set maximum number of selections**
+
+Limit the number of assets to be picked.
+```` objective-c
+- (BOOL)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker shouldSelectImage:(OLInstagramImage *)image
+{
+    // Allow 10 assets to be picked
+    return (imagePicker.selected.count < 10);
+}
+````
 
 ### Sample Apps
 The project is bundled with a Sample App to highlight the libraries usage. Alternatively you can see the library in action in the following iOS apps:
