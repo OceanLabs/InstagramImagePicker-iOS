@@ -349,9 +349,13 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
         instagramAccounts = @[];
     }
     
-    OLInstagramLoginWebViewController *loginVC = [[OLInstagramLoginWebViewController alloc] init];
+    NSBundle *currentBundle = [NSBundle bundleForClass:[OLInstagramLoginWebViewController class]];
+    
+    OLInstagramLoginWebViewController *loginVC = [[OLInstagramLoginWebViewController alloc] initWithNibName:NSStringFromClass([OLInstagramLoginWebViewController class])
+                                                                                                     bundle:currentBundle];
     loginVC.redirectURI = redirectURI;
-    OLInstagramImagePickerViewController *imagePickerVC = [[OLInstagramImagePickerViewController alloc] init];
+    OLInstagramImagePickerViewController *imagePickerVC = [[OLInstagramImagePickerViewController alloc] initWithNibName:NSStringFromClass([OLInstagramImagePickerViewController class])
+                                                                                                                 bundle:currentBundle];
     
     UIViewController *openingController = nil;
     if (instagramAccounts.count == 0) {
