@@ -78,6 +78,13 @@ We need to add forward secrecy exceptions for Instagram's CDNs. The following is
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
+      <key>facebook.com</key>
+			<dict>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 			<key>instagram.com</key>
 			<dict>
 				<key>NSExceptionRequiresForwardSecrecy</key>

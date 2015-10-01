@@ -39,9 +39,18 @@ static UIColor *disabledColor;
     titleFont       = [UIFont systemFontOfSize:12];
     titleHeight     = 20.0f;
     titleColor      = [UIColor whiteColor];
-    checkedIcon     = [UIImage imageNamed:(!(floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)) ? @"CTAssetsPickerChecked~iOS6" : @"CTAssetsPickerChecked"];
+    
     selectedColor   = [UIColor colorWithWhite:1 alpha:0.3];
     disabledColor   = [UIColor colorWithWhite:1 alpha:0.9];
+    
+    if ([UIImage respondsToSelector:@selector(imageNamed:inBundle:compatibleWithTraitCollection:)])
+    {
+        checkedIcon = [UIImage imageNamed:@"CTAssetsPickerChecked" inBundle:[NSBundle bundleForClass:[OLInstagramImagePickerCell class]] compatibleWithTraitCollection:nil];
+    }
+    else
+    {
+        checkedIcon = [UIImage imageNamed:@"CTAssetsPickerChecked"];
+    }
 }
 
 - (id)initWithFrame:(CGRect)frame {
