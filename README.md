@@ -29,7 +29,7 @@ You need to have set up your application correctly to work with Instagram by reg
 To launch the Instagram Image Picker:
 
 ```objective-c
-#import <OLInstagramImagePicker.h>
+#import <OLInstagramImagePickerController.h>
 
 OLInstagramImagePickerController *imagePicker = [[OLInstagramImagePickerController alloc] initWithClientId:@"YOUR_CLIENT_ID" secret:@"YOUR_CLIENT_SECRET" redirectURI:@"YOUR-APP-SCHEME://instagram-callback"];
 imagePicker.delegate = self;
