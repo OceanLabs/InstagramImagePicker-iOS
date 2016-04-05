@@ -46,8 +46,8 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 
 @implementation OLInstagramImagePickerViewController
 
-- (id)init {
-    if (self = [super init]) {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.media = [[NSMutableArray alloc] init];
         self.selectedImagesInFuturePages = [[NSMutableArray alloc] init];
         self.overflowMedia = @[];
