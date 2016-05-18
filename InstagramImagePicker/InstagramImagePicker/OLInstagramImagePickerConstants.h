@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-NSString *const kOLInstagramImagePickerErrorDomain;
-NSInteger kOLInstagramImagePickerErrorCodeOAuthTokenInvalid;
-NSInteger kOLInstagramImagePickerErrorCodeBadResponse;
-NSInteger kOLInstagramImagePickerErrorOAuthLoginFailed;
+extern NSString *const kOLInstagramImagePickerErrorDomain;
+extern NSInteger kOLInstagramImagePickerErrorCodeOAuthTokenInvalid;
+extern NSInteger kOLInstagramImagePickerErrorCodeBadResponse;
+extern NSInteger kOLInstagramImagePickerErrorOAuthLoginFailed;
