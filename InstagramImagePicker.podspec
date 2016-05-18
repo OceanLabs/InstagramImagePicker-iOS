@@ -16,5 +16,4 @@ Pod::Spec.new do |s|
   s.resources = ['InstagramImagePicker/InstagramImagePicker/InstagramImagePicker.xcassets', 'InstagramImagePicker/InstagramImagePicker/*.xib']
   s.dependency 'NXOAuth2Client', '~> 1.2.8'
   s.dependency 'SDWebImage', '~> 3.7.4'
-  s.dependency 'UIColor-HexString'
 end

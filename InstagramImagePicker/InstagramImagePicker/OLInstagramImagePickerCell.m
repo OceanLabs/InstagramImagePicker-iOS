@@ -9,7 +9,6 @@
 #import "OLInstagramImagePickerCell.h"
 #import "UIImageView+InstagramFadeIn.h"
 #import "OLInstagramImage.h"
-#import <UIColor-HexString/UIColor+HexString.h>
 
 #define kThumbnailLength    78.0f
 #define kThumbnailSize      CGSizeMake(kThumbnailLength, kThumbnailLength)
@@ -56,7 +55,7 @@ static UIColor *disabledColor;
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.opaque = YES;
-        self.backgroundColor = [UIColor colorWithHexString:@"#f7f7f7"];
+        self.backgroundColor = [UIColor colorWithWhite:0.969 alpha:1.000];
         CGRect f = CGRectMake(0, 0, frame.size.width, frame.size.height);
         self.imageView = [[UIImageView alloc] initWithFrame:f];
         self.checkImageView = [[UIImageView alloc] initWithImage:checkedIcon];
