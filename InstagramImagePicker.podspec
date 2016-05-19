@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'InstagramImagePicker'
-  s.version      = '1.1.5'
+  s.version      = '1.1.6'
   s.license      = 'MIT'
   s.summary      = 'An image/photo picker for Instagram photos modelled after UIImagePickerController'
   s.author       = { "Deon Botha" => "deon@oceanlabs.co" }
@@ -15,5 +15,4 @@ Pod::Spec.new do |s|
   s.source_files = ['InstagramImagePicker/InstagramImagePicker/OL*.{h,m}', 'InstagramImagePicker/InstagramImagePicker/UIImageView+InstagramFadeIn.{h,m}']
   s.resources = ['InstagramImagePicker/InstagramImagePicker/InstagramImagePicker.xcassets', 'InstagramImagePicker/InstagramImagePicker/*.xib']
   s.dependency 'NXOAuth2Client', '~> 1.2.8'
-  s.dependency 'SDWebImage', '~> 3.7.4'
 end
