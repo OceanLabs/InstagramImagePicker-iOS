@@ -11,4 +11,5 @@
 @interface UIImageView (InstagramFadeIn)
 - (void)setAndFadeInInstagramImageWithURL:(NSURL *)url;
 - (void)setAndFadeInInstagramImageWithURL:(NSURL *)url placeholder:(UIImage *)placeholder;
+- (void)setAndFadeInInstagramImageWithURL:(NSURL *)url placeholder:(UIImage *)placeholder completionHandler:(void(^)())handler;
 @end
