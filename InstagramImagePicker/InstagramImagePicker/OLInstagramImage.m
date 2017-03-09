@@ -16,7 +16,7 @@ static NSString *const kKeyFullURL = @"co.oceanlabs.InstagramImagePicker.kKeyFul
     if (self = [super init]) {
         _thumbURL = thumbURL;
         _fullURL = fullURL;
-        _caption = caption;
+        _caption = [caption isKindOfClass:[NSString class]] ? caption : @"";
         _latitude = latitude;
         _longitude = longitude;
     }

@@ -36,7 +36,7 @@
 /**
  The access the caption of image
  */
-@property (nonatomic, readonly, nullable) NSString *caption;
+@property (nonatomic, readonly, nonnull) NSString *caption;
 
 /**
  The access the latitude of image if possible
