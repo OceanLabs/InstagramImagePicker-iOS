@@ -12,10 +12,13 @@ static NSString *const kKeyThumbURL = @"co.oceanlabs.InstagramImagePicker.kKeyTh
 static NSString *const kKeyFullURL = @"co.oceanlabs.InstagramImagePicker.kKeyFullURL";
 
 @implementation OLInstagramImage
-- (id)initWithThumbURL:(NSURL *)thumbURL fullURL:(NSURL *)fullURL {
+- (id)initWithThumbURL:(NSURL *)thumbURL fullURL:(NSURL *)fullURL caption:(NSString *)caption latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude {
     if (self = [super init]) {
         _thumbURL = thumbURL;
         _fullURL = fullURL;
+        _caption = caption;
+        _latitude = latitude;
+        _longitude = longitude;
     }
     
     return self;
@@ -52,7 +55,11 @@ static NSString *const kKeyFullURL = @"co.oceanlabs.InstagramImagePicker.kKeyFul
 #pragma mark - NSCopying protocol methods
 
 - (id)copyWithZone:(NSZone *)zone {
-    OLInstagramImage *copy = [[OLInstagramImage allocWithZone:zone] initWithThumbURL:self.thumbURL fullURL:self.fullURL];
+    OLInstagramImage *copy = [[OLInstagramImage allocWithZone:zone] initWithThumbURL:self.thumbURL
+                                                                             fullURL:self.fullURL
+                                                                             caption:self.caption
+                                                                            latitude:self.latitude
+                                                                           longitude:self.longitude];
     return copy;
 }
 

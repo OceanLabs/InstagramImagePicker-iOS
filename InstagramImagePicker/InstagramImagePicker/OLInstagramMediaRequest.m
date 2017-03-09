@@ -134,8 +134,20 @@
                                    if (range.location == 0) {
                                        standardResolutionImageURLStr = [standardResolutionImageURLStr stringByReplacingCharactersInRange:range withString:@"https://"];
                                    }
-
-                                   OLInstagramImage *im = [[OLInstagramImage alloc] initWithThumbURL:[NSURL URLWithString:thumbnailResolutionImageURLStr] fullURL:[NSURL URLWithString:standardResolutionImageURLStr]];
+                                   
+                                   NSDictionary *location = [d valueForKey:@"location"];
+                                   NSNumber *lat = nil;
+                                   NSNumber *lon = nil;
+                                   if (location != (id)[NSNull null]) {
+                                       lat = [location valueForKey:@"latitude"];
+                                       lon = [location valueForKey:@"longitude"];
+                                   }
+                                   
+                                   OLInstagramImage *im = [[OLInstagramImage alloc] initWithThumbURL:[NSURL URLWithString:thumbnailResolutionImageURLStr]
+                                                                                             fullURL:[NSURL URLWithString:standardResolutionImageURLStr]
+                                                                                             caption:[[d valueForKey:@"caption"] valueForKey:@"text"]
+                                                                                            latitude:lat
+                                                                                           longitude:lon];
                                    [media addObject:im];
                                    
                                }

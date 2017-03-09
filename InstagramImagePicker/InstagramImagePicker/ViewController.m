@@ -34,7 +34,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
     for (OLInstagramImage *image in images) {
-        NSLog(@"User selected instagram image with full URL: %@", image.fullURL);
+        NSLog(@"User selected instagram image with full URL: %@ lat: %f lon: %f", image.fullURL, image.latitude.doubleValue, image.longitude.doubleValue);
     }
 }
 

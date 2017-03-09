@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		2E5BDC461CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5BDC431CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.m */; };
 		2E5BDC471CEDEA1D00257B1A /* OLInstagramImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5BDC451CEDEA1D00257B1A /* OLInstagramImageDownloader.m */; };
-		33E890773771409A97774620 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3607167860844571B2FA302D /* libPods.a */; };
 		3D0D7AC61AC070F300746FC8 /* UIImageView+InstagramFadeIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D7AC51AC070F300746FC8 /* UIImageView+InstagramFadeIn.m */; };
 		3D9DE3B01ADB1F2B001E1FA1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9DE3AF1ADB1F2B001E1FA1 /* Default-568h@2x.png */; };
+		475DF669E2016AD7BF730664 /* libPods-InstagramImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D8107F4D92672EE8BD1762 /* libPods-InstagramImagePicker.a */; };
 		CD96215A185B77BF007FFBE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD962159185B77BF007FFBE6 /* Foundation.framework */; };
 		CD96215C185B77BF007FFBE6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD96215B185B77BF007FFBE6 /* CoreGraphics.framework */; };
 		CD96215E185B77BF007FFBE6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD96215D185B77BF007FFBE6 /* UIKit.framework */; };
@@ -47,12 +47,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		21377F1BE0C661E4B29A4E53 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		09D8107F4D92672EE8BD1762 /* libPods-InstagramImagePicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstagramImagePicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C632759218AC3E6CE595F2F /* Pods-InstagramImagePicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramImagePicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramImagePicker/Pods-InstagramImagePicker.release.xcconfig"; sourceTree = "<group>"; };
 		2E5BDC421CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLInstagramImageDownloadDelegate.h; sourceTree = "<group>"; };
 		2E5BDC431CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLInstagramImageDownloadDelegate.m; sourceTree = "<group>"; };
 		2E5BDC441CEDEA1D00257B1A /* OLInstagramImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLInstagramImageDownloader.h; sourceTree = "<group>"; };
 		2E5BDC451CEDEA1D00257B1A /* OLInstagramImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLInstagramImageDownloader.m; sourceTree = "<group>"; };
-		3607167860844571B2FA302D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3403DB5F154A3C46188C383D /* Pods-InstagramImagePicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramImagePicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramImagePicker/Pods-InstagramImagePicker.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0D7AC41AC070F300746FC8 /* UIImageView+InstagramFadeIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+InstagramFadeIn.h"; sourceTree = "<group>"; };
 		3D0D7AC51AC070F300746FC8 /* UIImageView+InstagramFadeIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+InstagramFadeIn.m"; sourceTree = "<group>"; };
 		3D9DE3AF1ADB1F2B001E1FA1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -89,8 +90,6 @@
 		CD9621A5185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OLInstagramImagePickerViewController.xib; sourceTree = "<group>"; };
 		CD9621A6185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OLInstagramLoginWebViewController.xib; sourceTree = "<group>"; };
 		CD99CB59185CF6060099A29A /* InstagramImagePicker.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = InstagramImagePicker.xcassets; sourceTree = "<group>"; };
-		EA239E448938128901B5041C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		EBC9040BB8C1ED56FEAA8F25 /* libPods-InstagramImagePicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstagramImagePicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +100,7 @@
 				CD96215C185B77BF007FFBE6 /* CoreGraphics.framework in Frameworks */,
 				CD96215E185B77BF007FFBE6 /* UIKit.framework in Frameworks */,
 				CD96215A185B77BF007FFBE6 /* Foundation.framework in Frameworks */,
-				33E890773771409A97774620 /* libPods.a in Frameworks */,
+				475DF669E2016AD7BF730664 /* libPods-InstagramImagePicker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		867F9E69D09ECB90DEFB7532 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3403DB5F154A3C46188C383D /* Pods-InstagramImagePicker.debug.xcconfig */,
+				0C632759218AC3E6CE595F2F /* Pods-InstagramImagePicker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CD18F747185DE4A400CA2653 /* Private */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +170,7 @@
 				CD96217E185B77BF007FFBE6 /* InstagramImagePickerTests */,
 				CD962158185B77BF007FFBE6 /* Frameworks */,
 				CD962157185B77BF007FFBE6 /* Products */,
-				D6C710A122163D767123AD88 /* Pods */,
+				867F9E69D09ECB90DEFB7532 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,8 +190,7 @@
 				CD96215B185B77BF007FFBE6 /* CoreGraphics.framework */,
 				CD96215D185B77BF007FFBE6 /* UIKit.framework */,
 				CD962178185B77BF007FFBE6 /* XCTest.framework */,
-				3607167860844571B2FA302D /* libPods.a */,
-				EBC9040BB8C1ED56FEAA8F25 /* libPods-InstagramImagePicker.a */,
+				09D8107F4D92672EE8BD1762 /* libPods-InstagramImagePicker.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -280,15 +287,6 @@
 			name = XIB;
 			sourceTree = "<group>";
 		};
-		D6C710A122163D767123AD88 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EA239E448938128901B5041C /* Pods.debug.xcconfig */,
-				21377F1BE0C661E4B29A4E53 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -296,10 +294,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD962188185B77BF007FFBE6 /* Build configuration list for PBXNativeTarget "InstagramImagePicker" */;
 			buildPhases = (
+				87141CB51C256ADA0791654F /* [CP] Check Pods Manifest.lock */,
 				CD962152185B77BF007FFBE6 /* Sources */,
 				CD962153185B77BF007FFBE6 /* Frameworks */,
 				CD962154185B77BF007FFBE6 /* Resources */,
-				B03B27BD678FABFA4CE08E21 /* Embed Pods Frameworks */,
+				41C2F13841C05A36F3383C1A /* [CP] Embed Pods Frameworks */,
+				5779B639B4DF70A07FC476E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -386,19 +386,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B03B27BD678FABFA4CE08E21 /* Embed Pods Frameworks */ = {
+		41C2F13841C05A36F3383C1A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InstagramImagePicker/Pods-InstagramImagePicker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5779B639B4DF70A07FC476E4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InstagramImagePicker/Pods-InstagramImagePicker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87141CB51C256ADA0791654F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -542,7 +572,7 @@
 		};
 		CD962189185B77BF007FFBE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA239E448938128901B5041C /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 3403DB5F154A3C46188C383D /* Pods-InstagramImagePicker.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "InstagramImagePicker/InstagramImagePicker-Prefix.pch";
@@ -554,7 +584,7 @@
 		};
 		CD96218A185B77BF007FFBE6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21377F1BE0C661E4B29A4E53 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 0C632759218AC3E6CE595F2F /* Pods-InstagramImagePicker.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "InstagramImagePicker/InstagramImagePicker-Prefix.pch";

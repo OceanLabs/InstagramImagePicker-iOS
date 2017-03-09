@@ -21,16 +21,33 @@
  @param fullURL The URL to access the standard resolution image
  @return Returns an initialised OLInstagramImage instance
  */
-- (id)initWithThumbURL:(NSURL *)thumbURL fullURL:(NSURL *)fullURL;
+- (_Nonnull id)initWithThumbURL:(nonnull NSURL *)thumbURL fullURL:(nonnull NSURL *)fullURL caption:(nullable NSString *)caption latitude:(nullable NSNumber*)latitude longitude:(nullable NSNumber*)longitude;
 
 /**
  The URL to access the thumb resolution image
  */
-@property (nonatomic, readonly) NSURL *thumbURL;
+@property (nonatomic, readonly, nonnull) NSURL *thumbURL;
 
 /**
  The URL to access the standard resolution image
  */
-@property (nonatomic, readonly) NSURL *fullURL;
+@property (nonatomic, readonly, nonnull) NSURL *fullURL;
+
+/**
+ The access the caption of image
+ */
+@property (nonatomic, readonly, nullable) NSString *caption;
+
+/**
+ The access the latitude of image if possible
+ */
+@property (nonatomic, readonly, nullable) NSNumber *latitude;
+
+/**
+ The access the longitude of image if possible
+ */
+@property (nonatomic, readonly, nullable) NSNumber *longitude;
+
+
 
 @end

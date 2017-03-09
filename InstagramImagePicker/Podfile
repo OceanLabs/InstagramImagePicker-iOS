@@ -1,3 +1,5 @@
 platform :ios, '7.0'
 
-pod 'NXOAuth2Client', '~> 1.2.8'
+target 'InstagramImagePicker' do
+    pod 'NXOAuth2Client', '~> 1.2.8'
+end
