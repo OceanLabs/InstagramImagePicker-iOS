@@ -8,7 +8,7 @@
 
 #import "OLInstagramImagePickerController.h"
 #import "OLInstagramMediaRequest.h"
-#import "OLInstagramImage.h"
+#import "OLInstagramMedia.h"
 #import "OLInstagramImagePickerCell.h"
 #import "OLInstagramLoginWebViewController.h"
 #import "OLInstagramImagePickerConstants.h"
@@ -24,8 +24,8 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 @end
 
 @interface OLInstagramImagePickerViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
-@property (nonatomic, strong) NSArray/*<OLInstagramImage>*/ *selected;
-@property (nonatomic, strong) NSMutableArray/*<OLInstagramImage>*/ *selectedImagesInFuturePages; // selected images that don't yet occur in collectionView.indexPathsForSelectedItems as the user needs to load more instagram pages first
+@property (nonatomic, strong) NSArray/*<OLInstagramMedia>*/ *selected;
+@property (nonatomic, strong) NSMutableArray/*<OLInstagramMedia>*/ *selectedImagesInFuturePages; // selected images that don't yet occur in collectionView.indexPathsForSelectedItems as the user needs to load more instagram pages first
 @property (nonatomic, assign) BOOL startImageLoadingOnViewDidLoad;
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *loadingIndicator;
@@ -153,7 +153,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
         // If any of the items in the newly loaded page were previously selected then make them selected
         NSMutableArray *selectedItemsInThisPage = [[NSMutableArray alloc] init];
         for (NSUInteger itemIndex = mediaStartCount; itemIndex < self.media.count; ++itemIndex) {
-            OLInstagramImage *image = self.media[itemIndex];
+            OLInstagramMedia *image = self.media[itemIndex];
             if ([self.selectedImagesInFuturePages indexOfObject:image] != NSNotFound) {
                 [selectedItemsInThisPage addObject:image];
                 [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:itemIndex inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
@@ -191,7 +191,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     NSMutableArray *selectedItems = [[NSMutableArray alloc] init];
     NSArray *selectedPaths = self.collectionView.indexPathsForSelectedItems;
     for (NSIndexPath *path in selectedPaths) {
-        OLInstagramImage *instagramImage = [self.media objectAtIndex:path.row];
+        OLInstagramMedia *instagramImage = [self.media objectAtIndex:path.row];
         [selectedItems addObject:instagramImage];
     }
     
@@ -209,7 +209,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     // select any items in the collection view as appropriate, any items that have yet to be downloaded (due to the user not scrolling far enough)
     // are stored for selecting later when we fetch future pages.
     NSMutableArray *selectedImagesInFuturePages = [[NSMutableArray alloc] init];
-    for (OLInstagramImage *image in selected) {
+    for (OLInstagramMedia *image in selected) {
         NSUInteger itemIndex = [self.media indexOfObject:image];
         if (itemIndex == NSNotFound) {
             [selectedImagesInFuturePages addObject:image];

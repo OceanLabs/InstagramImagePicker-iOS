@@ -8,7 +8,7 @@
 
 #import "OLInstagramImagePickerCell.h"
 #import "UIImageView+InstagramFadeIn.h"
-#import "OLInstagramImage.h"
+#import "OLInstagramMedia.h"
 
 #define kThumbnailLength    78.0f
 #define kThumbnailSize      CGSizeMake(kThumbnailLength, kThumbnailLength)
@@ -18,7 +18,7 @@
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, assign) BOOL disabled;
-@property (nonatomic, strong) OLInstagramImage *instagramMedia;
+@property (nonatomic, strong) OLInstagramMedia *instagramMedia;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImageView *checkImageView;
 @property (nonatomic, strong) UIView *selectedDisabledOverlayView;
@@ -75,9 +75,16 @@ static UIColor *disabledColor;
     return self;
 }
 
-- (void)bind:(OLInstagramImage *)media {
+- (void)bind:(OLInstagramMedia *)media {
     self.instagramMedia = media;
     [self.imageView setAndFadeInInstagramImageWithURL:media.thumbURL];
+    
+    if (media.type == OLInstagramMediaTypeVideo) {
+        UIImageView *camera = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"videocam_white"]];
+        camera.alpha = 0.75;
+        [self.imageView addSubview:camera];
+        camera.center = CGPointMake(self.imageView.bounds.size.width / 2.0, self.imageView.bounds.size.height / 2.0);
+    }
 }
 
 - (void)setSelected:(BOOL)selected {

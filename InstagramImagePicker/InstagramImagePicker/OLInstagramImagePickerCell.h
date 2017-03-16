@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class OLInstagramImage;
+@class OLInstagramMedia;
 
 @interface OLInstagramImagePickerCell : UICollectionViewCell
-- (void)bind:(OLInstagramImage *)media;
+- (void)bind:(OLInstagramMedia *)media;
 
 @end

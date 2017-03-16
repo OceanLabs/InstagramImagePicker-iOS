@@ -6,16 +6,22 @@
 //  Copyright (c) 2013 dbotha. All rights reserved.
 //
 
-#import "OLInstagramImage.h"
+#import "OLInstagramMedia.h"
 
 static NSString *const kKeyThumbURL = @"co.oceanlabs.InstagramImagePicker.kKeyThumbURL";
 static NSString *const kKeyFullURL = @"co.oceanlabs.InstagramImagePicker.kKeyFullURL";
 
-@implementation OLInstagramImage
-- (id)initWithThumbURL:(NSURL *)thumbURL fullURL:(NSURL *)fullURL caption:(NSString *)caption latitude:(NSNumber*)latitude longitude:(NSNumber*)longitude {
+@implementation OLInstagramMedia
+- (id)initWithThumbURL:(nonnull NSURL *)thumbURL
+               fullURL:(nonnull NSURL *)fullURL
+             mediaType:(OLInstagramMediaType)mediaType
+               caption:(nullable NSString *)caption
+              latitude:(nullable NSNumber*)latitude
+             longitude:(nullable NSNumber*)longitude {
     if (self = [super init]) {
         _thumbURL = thumbURL;
         _fullURL = fullURL;
+        _type = mediaType;
         _caption = [caption isKindOfClass:[NSString class]] ? caption : @"";
         _latitude = latitude;
         _longitude = longitude;
@@ -25,7 +31,7 @@ static NSString *const kKeyFullURL = @"co.oceanlabs.InstagramImagePicker.kKeyFul
 }
 
 - (BOOL)isEqual:(id)object {
-    if (![object isMemberOfClass:[OLInstagramImage class]]) {
+    if (![object isMemberOfClass:[OLInstagramMedia class]]) {
         return NO;
     }
     
@@ -55,8 +61,9 @@ static NSString *const kKeyFullURL = @"co.oceanlabs.InstagramImagePicker.kKeyFul
 #pragma mark - NSCopying protocol methods
 
 - (id)copyWithZone:(NSZone *)zone {
-    OLInstagramImage *copy = [[OLInstagramImage allocWithZone:zone] initWithThumbURL:self.thumbURL
+    OLInstagramMedia *copy = [[OLInstagramMedia allocWithZone:zone] initWithThumbURL:self.thumbURL
                                                                              fullURL:self.fullURL
+                                                                           mediaType:self.type
                                                                              caption:self.caption
                                                                             latitude:self.latitude
                                                                            longitude:self.longitude];

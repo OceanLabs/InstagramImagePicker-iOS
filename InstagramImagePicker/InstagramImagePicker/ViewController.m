@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "OLInstagramImagePickerController.h"
-#import "OLInstagramImage.h"
+#import "OLInstagramMedia.h"
 
 @interface ViewController () <OLInstagramImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, strong) NSArray *selectedImages;
@@ -29,11 +29,11 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker didFinishPickingImages:(NSArray/*<OLInstagramImage>*/ *)images {
+- (void)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker didFinishPickingImages:(NSArray/*<OLInstagramMedia>*/ *)images {
     self.selectedImages = images;
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    for (OLInstagramImage *image in images) {
+    for (OLInstagramMedia *image in images) {
         NSLog(@"User selected instagram image with full URL: %@ lat: %f lon: %f", image.fullURL, image.latitude.doubleValue, image.longitude.doubleValue);
     }
 }

@@ -7,7 +7,7 @@
 //
 
 #import "OLInstagramMediaRequest.h"
-#import "OLInstagramImage.h"
+#import "OLInstagramMedia.h"
 #import "OLInstagramImagePickerConstants.h"
 #import <NXOAuth2Client/NXOAuth2.h>
 
@@ -107,6 +107,11 @@
                                        continue;
                                    }
                                    
+                                   OLInstagramMediaType type = OLInstagramMediaTypeImage;
+                                   id type_val = [d valueForKey:@"type"];
+                                   if ([type_val isEqualToString:@"video"]) {
+                                       type = OLInstagramMediaTypeVideo;
+                                   }
                                    
                                    id images = [d objectForKey:@"images"];
                                    if (![images isKindOfClass:[NSDictionary class]]) {
@@ -120,9 +125,26 @@
                                    }
                                    
                                    id thumbnailResolutionImageURLStr = [thumbnailResolutionImage objectForKey:@"url"];
-                                   id standardResolutionImageURLStr = [standardResolutionImage objectForKey:@"url"];
-                                   if (![thumbnailResolutionImageURLStr isKindOfClass:[NSString class]] || ![standardResolutionImageURLStr isKindOfClass:[NSString class]]) {
+                                   id standardResolutionMediaURLStr = [standardResolutionImage objectForKey:@"url"];
+                                   if (![thumbnailResolutionImageURLStr isKindOfClass:[NSString class]] || ![standardResolutionMediaURLStr isKindOfClass:[NSString class]]) {
                                        continue;
+                                   }
+                                   
+                                   if (type == OLInstagramMediaTypeVideo) {
+                                       id videos = [d objectForKey:@"videos"];
+                                       if (![videos isKindOfClass:[NSDictionary class]]) {
+                                           continue;
+                                       }
+
+                                       id standardResolutionVideo = [videos objectForKey:@"standard_resolution"];
+                                       if (![standardResolutionVideo isKindOfClass:[NSDictionary class]]) {
+                                           continue;
+                                       }
+
+                                       standardResolutionMediaURLStr = [standardResolutionVideo objectForKey:@"url"];
+                                       if (![standardResolutionMediaURLStr isKindOfClass:[NSString class]]) {
+                                           continue;
+                                       }
                                    }
                                    
                                    NSRange range = [thumbnailResolutionImageURLStr rangeOfString:@"http://"];
@@ -130,9 +152,9 @@
                                        thumbnailResolutionImageURLStr = [thumbnailResolutionImageURLStr stringByReplacingCharactersInRange:range withString:@"https://"];
                                    }
                                    
-                                   range = [standardResolutionImageURLStr rangeOfString:@"http://"];
+                                   range = [standardResolutionMediaURLStr rangeOfString:@"http://"];
                                    if (range.location == 0) {
-                                       standardResolutionImageURLStr = [standardResolutionImageURLStr stringByReplacingCharactersInRange:range withString:@"https://"];
+                                       standardResolutionMediaURLStr = [standardResolutionMediaURLStr stringByReplacingCharactersInRange:range withString:@"https://"];
                                    }
                                    
                                    NSDictionary *location = [d valueForKey:@"location"];
@@ -143,8 +165,9 @@
                                        lon = [location valueForKey:@"longitude"];
                                    }
                                    
-                                   OLInstagramImage *im = [[OLInstagramImage alloc] initWithThumbURL:[NSURL URLWithString:thumbnailResolutionImageURLStr]
-                                                                                             fullURL:[NSURL URLWithString:standardResolutionImageURLStr]
+                                   OLInstagramMedia *im = [[OLInstagramMedia alloc] initWithThumbURL:[NSURL URLWithString:thumbnailResolutionImageURLStr]
+                                                                                             fullURL:[NSURL URLWithString:standardResolutionMediaURLStr]
+                                                                                           mediaType:type
                                                                                              caption:[[d valueForKey:@"caption"] valueForKey:@"text"]
                                                                                             latitude:lat
                                                                                            longitude:lon];

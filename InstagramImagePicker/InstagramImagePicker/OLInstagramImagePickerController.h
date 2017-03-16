@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class OLInstagramImagePickerController;
-@class OLInstagramImage;
+@class OLInstagramMedia;
 
 /**
  The OLInstagramImagePickerControllerDelegate protocol defines methods that your delegate object must implement to interact with the image picker interface. 
@@ -30,9 +30,9 @@
  Tells the delegate that the user finished picking images from their instagram collection.
  
  @param imagePicker The OLInstagramImagePickerController picker instance that you instantiated to facilitate the picking operation
- @param images An array of OLInstagramImage objects representing the images the user picked. If the user picked no images this array will be empty.
+ @param images An array of OLInstagramMedia objects representing the images the user picked. If the user picked no images this array will be empty.
  */
-- (void)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker didFinishPickingImages:(NSArray/*<OLInstagramImage>*/ *)images;
+- (void)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker didFinishPickingImages:(NSArray/*<OLInstagramMedia>*/ *)images;
 
 /**
  Tells the delegate that the user did cancel picking images
@@ -47,7 +47,7 @@
  @param imagePicker The OLInstagramImagePickerController picker instance that you instantiated to facilitate the picking operation
  @param image The OLInstagram image that was picked
  */
-- (void)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker didSelectImage:(OLInstagramImage *)image;
+- (void)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker didSelectImage:(OLInstagramMedia *)image;
 
 /**
  Asks the delegate if an image should be selected
@@ -55,7 +55,7 @@
  @param image The OLInstagram image about to be selected
  @return Returns whether or not the image should be selected
  */
-- (BOOL)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker shouldSelectImage:(OLInstagramImage *)image;
+- (BOOL)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker shouldSelectImage:(OLInstagramMedia *)image;
 @end
 
 /** 
@@ -81,7 +81,7 @@
 /**
  Holds the currently user selected images in the picker UI. Setting this property will result in the corresponding images in the picker UI updating.
  */
-@property (nonatomic, copy) NSArray/*<OLInstagramImage>*/ *selected;
+@property (nonatomic, copy) NSArray/*<OLInstagramMedia>*/ *selected;
 
 /**
  The image picker’s delegate object.
