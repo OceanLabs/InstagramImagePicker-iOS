@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12BCA0431E7B09EB00312728 /* videocam_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 12BCA0401E7B09EB00312728 /* videocam_white.png */; };
-		12BCA0441E7B09EB00312728 /* videocam_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12BCA0411E7B09EB00312728 /* videocam_white@2x.png */; };
-		12BCA0451E7B09EB00312728 /* videocam_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 12BCA0421E7B09EB00312728 /* videocam_white@3x.png */; };
 		2E5BDC461CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5BDC431CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.m */; };
 		2E5BDC471CEDEA1D00257B1A /* OLInstagramImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5BDC451CEDEA1D00257B1A /* OLInstagramImageDownloader.m */; };
 		3D0D7AC61AC070F300746FC8 /* UIImageView+InstagramFadeIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D7AC51AC070F300746FC8 /* UIImageView+InstagramFadeIn.m */; };
@@ -52,9 +49,6 @@
 /* Begin PBXFileReference section */
 		09D8107F4D92672EE8BD1762 /* libPods-InstagramImagePicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstagramImagePicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C632759218AC3E6CE595F2F /* Pods-InstagramImagePicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramImagePicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramImagePicker/Pods-InstagramImagePicker.release.xcconfig"; sourceTree = "<group>"; };
-		12BCA0401E7B09EB00312728 /* videocam_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videocam_white.png; sourceTree = "<group>"; };
-		12BCA0411E7B09EB00312728 /* videocam_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videocam_white@2x.png"; sourceTree = "<group>"; };
-		12BCA0421E7B09EB00312728 /* videocam_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videocam_white@3x.png"; sourceTree = "<group>"; };
 		2E5BDC421CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLInstagramImageDownloadDelegate.h; sourceTree = "<group>"; };
 		2E5BDC431CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLInstagramImageDownloadDelegate.m; sourceTree = "<group>"; };
 		2E5BDC441CEDEA1D00257B1A /* OLInstagramImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLInstagramImageDownloader.h; sourceTree = "<group>"; };
@@ -287,9 +281,6 @@
 		CD9621A4185B7C05007FFBE6 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
-				12BCA0401E7B09EB00312728 /* videocam_white.png */,
-				12BCA0411E7B09EB00312728 /* videocam_white@2x.png */,
-				12BCA0421E7B09EB00312728 /* videocam_white@3x.png */,
 				CD9621A5185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib */,
 				CD9621A6185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib */,
 			);
@@ -377,10 +368,7 @@
 			files = (
 				CD962164185B77BF007FFBE6 /* InfoPlist.strings in Resources */,
 				CD99CB5A185CF6060099A29A /* InstagramImagePicker.xcassets in Resources */,
-				12BCA0451E7B09EB00312728 /* videocam_white@3x.png in Resources */,
-				12BCA0441E7B09EB00312728 /* videocam_white@2x.png in Resources */,
 				CD9621A8185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib in Resources */,
-				12BCA0431E7B09EB00312728 /* videocam_white.png in Resources */,
 				CD9621A7185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib in Resources */,
 				CD96216D185B77BF007FFBE6 /* Main.storyboard in Resources */,
 				3D9DE3B01ADB1F2B001E1FA1 /* Default-568h@2x.png in Resources */,
