@@ -80,7 +80,9 @@ static UIColor *disabledColor;
     [self.imageView setAndFadeInInstagramImageWithURL:media.thumbURL];
     
     if (media.type == OLInstagramMediaTypeVideo) {
-        UIImageView *camera = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"videocam_white"]];
+        UIImageView *camera = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"videocam_white"
+                                                                            inBundle:[NSBundle bundleForClass:[self classForCoder]]
+                                                       compatibleWithTraitCollection:nil]];
         camera.alpha = 0.75;
         [self.imageView addSubview:camera];
         camera.center = CGPointMake(self.imageView.bounds.size.width / 2.0, self.imageView.bounds.size.height / 2.0);
