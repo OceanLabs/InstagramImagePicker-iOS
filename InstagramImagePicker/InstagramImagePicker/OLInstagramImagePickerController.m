@@ -91,6 +91,12 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     [title sizeToFit];
     self.navigationItem.titleView = title;
 }
+    
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self updateTitleWithSelectedIndexPaths:self.selected.count];
+}
 
 - (void)startImageLoading {
     self.loadingIndicator.hidden = NO;
@@ -232,9 +238,9 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     return topController;
 }
 
--(void) updateTitleWithSelectedIndexPaths:(NSArray *)indexPaths{
+-(void) updateTitleWithSelectedIndexPaths:(NSInteger)countItems{
     // Reset title to group name
-    if (indexPaths.count == 0)
+    if (countItems == 0)
     {
         self.title = NSLocalizedString(@"Add Photos", @"");
         ((UILabel *)self.navigationItem.titleView).text= self.title;
@@ -242,9 +248,9 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
         return;
     }
     
-    NSString *format = (indexPaths.count > 1) ? NSLocalizedString(@"%ld Photos Selected", nil) : NSLocalizedString(@"%ld Photo Selected", nil);
+    NSString *format = (countItems > 1) ? NSLocalizedString(@"%ld Photos Selected", nil) : NSLocalizedString(@"%ld Photo Selected", nil);
     
-    self.title = [NSString stringWithFormat:format, (unsigned long) indexPaths.count];
+    self.title = [NSString stringWithFormat:format, (unsigned long) countItems];
      ((UILabel *)self.navigationItem.titleView).text= self.title;
     [((UILabel *)self.navigationItem.titleView) sizeToFit];
 }
@@ -276,11 +282,11 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 }
 
 -(void) collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self updateTitleWithSelectedIndexPaths:collectionView.indexPathsForSelectedItems];
+    [self updateTitleWithSelectedIndexPaths:self.selected.count];
 }
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self updateTitleWithSelectedIndexPaths:collectionView.indexPathsForSelectedItems];
+    [self updateTitleWithSelectedIndexPaths:self.selected.count];
     OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
     if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:didSelectImage:)]){
         [picker.delegate instagramImagePicker:picker didSelectImage:[self.media objectAtIndex:indexPath.item]];
@@ -288,7 +294,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self updateTitleWithSelectedIndexPaths:collectionView.indexPathsForSelectedItems];
+    [self updateTitleWithSelectedIndexPaths:self.selected.count];
     OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
     if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:shouldSelectImage:)]){
          return [picker.delegate instagramImagePicker:picker shouldSelectImage:[self.media objectAtIndex:indexPath.item]];
