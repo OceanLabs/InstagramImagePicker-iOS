@@ -59,7 +59,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = NSLocalizedString(@"Add Photos", @"");
+    self.title = NSLocalizedString(@"Add Media", @"");
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"") style:UIBarButtonItemStylePlain target:self action:@selector(onButtonDoneClicked)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Logout", @"") style:UIBarButtonItemStylePlain target:self action:@selector(onButtonLogoutClicked)];
     
@@ -242,13 +242,13 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     // Reset title to group name
     if (countItems == 0)
     {
-        self.title = NSLocalizedString(@"Add Photos", @"");
+        self.title = NSLocalizedString(@"Add Media", @"");
         ((UILabel *)self.navigationItem.titleView).text= self.title;
         [((UILabel *)self.navigationItem.titleView) sizeToFit];
         return;
     }
     
-    NSString *format = (countItems > 1) ? NSLocalizedString(@"%ld Photos Selected", nil) : NSLocalizedString(@"%ld Photo Selected", nil);
+    NSString *format = NSLocalizedString(@"%ld Media Selected", nil);
     
     self.title = [NSString stringWithFormat:format, (unsigned long) countItems];
      ((UILabel *)self.navigationItem.titleView).text= self.title;
