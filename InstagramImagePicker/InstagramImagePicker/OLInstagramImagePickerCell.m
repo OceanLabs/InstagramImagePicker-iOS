@@ -22,6 +22,8 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImageView *checkImageView;
 @property (nonatomic, strong) UIView *selectedDisabledOverlayView;
+
+@property (nonatomic, strong) UIImageView *camera;
 @end
 
 @implementation OLInstagramImagePickerCell
@@ -42,12 +44,10 @@ static UIColor *disabledColor;
     selectedColor   = [UIColor colorWithWhite:1 alpha:0.3];
     disabledColor   = [UIColor colorWithWhite:1 alpha:0.9];
     
-    if ([UIImage respondsToSelector:@selector(imageNamed:inBundle:compatibleWithTraitCollection:)])
-    {
+    if ([UIImage respondsToSelector:@selector(imageNamed:inBundle:compatibleWithTraitCollection:)]) {
         checkedIcon = [UIImage imageNamed:@"CTAssetsPickerChecked" inBundle:[NSBundle bundleForClass:[OLInstagramImagePickerCell class]] compatibleWithTraitCollection:nil];
     }
-    else
-    {
+    else {
         checkedIcon = [UIImage imageNamed:@"CTAssetsPickerChecked"];
     }
 }
@@ -76,16 +76,19 @@ static UIColor *disabledColor;
 }
 
 - (void)bind:(OLInstagramMedia *)media {
+    [_camera removeFromSuperview];
+    _camera = nil;
+
     self.instagramMedia = media;
     [self.imageView setAndFadeInInstagramImageWithURL:media.thumbURL];
     
     if (media.type == OLInstagramMediaTypeVideo) {
-        UIImageView *camera = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"videocam_white"
-                                                                            inBundle:[NSBundle bundleForClass:[self classForCoder]]
-                                                       compatibleWithTraitCollection:nil]];
-        camera.alpha = 0.75;
-        [self.imageView addSubview:camera];
-        camera.center = CGPointMake(self.imageView.bounds.size.width / 2.0, self.imageView.bounds.size.height / 2.0);
+        _camera = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"videocam_white"
+                                                               inBundle:[NSBundle bundleForClass:[self classForCoder]]
+                                          compatibleWithTraitCollection:nil]];
+        _camera.alpha = 0.75;
+        [self.imageView addSubview:_camera];
+        _camera.center = CGPointMake(self.imageView.bounds.size.width / 2.0, self.imageView.bounds.size.height / 2.0);
     }
 }
 
