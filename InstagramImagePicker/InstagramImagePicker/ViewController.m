@@ -44,7 +44,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (BOOL)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker shouldDisplayMedis:(OLInstagramMedia *)media {
+- (BOOL)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker shouldDisplay:(OLInstagramMedia *)media {
     if (media.latitude.doubleValue > 0.0 || media.longitude.doubleValue > 0.0) {
         NSLog(@"latitude: %@ longitude: %@", media.latitude.stringValue, media.longitude.stringValue);
         return TRUE;

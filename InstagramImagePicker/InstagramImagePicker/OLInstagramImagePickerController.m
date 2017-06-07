@@ -170,8 +170,8 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     }
     filter:^BOOL(OLInstagramMedia *media) {
         OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
-        if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:shouldDisplayMedis:)]){
-            return [picker.delegate instagramImagePicker:picker shouldDisplayMedis:media];
+        if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:shouldDisplay:)]){
+            return [picker.delegate instagramImagePicker:picker shouldDisplay:media];
         }
 
         return TRUE;
@@ -298,16 +298,16 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self updateTitleWithSelectedIndexPaths:self.selected.count];
     OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
-    if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:didSelectImage:)]){
-        [picker.delegate instagramImagePicker:picker didSelectImage:[self.media objectAtIndex:indexPath.item]];
+    if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:didSelect:)]){
+        [picker.delegate instagramImagePicker:picker didSelect:[self.media objectAtIndex:indexPath.item]];
     }
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self updateTitleWithSelectedIndexPaths:self.selected.count];
     OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
-    if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:shouldSelectImage:)]){
-         return [picker.delegate instagramImagePicker:picker shouldSelectImage:[self.media objectAtIndex:indexPath.item]];
+    if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:shouldSelect:)]){
+         return [picker.delegate instagramImagePicker:picker shouldSelect:[self.media objectAtIndex:indexPath.item]];
     }
     else{
         return YES;
