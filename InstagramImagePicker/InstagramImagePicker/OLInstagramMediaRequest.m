@@ -7,7 +7,6 @@
 //
 
 #import "OLInstagramMediaRequest.h"
-#import "OLInstagramMedia.h"
 #import "OLInstagramImagePickerConstants.h"
 #import <NXOAuth2Client/NXOAuth2.h>
 
@@ -34,12 +33,12 @@
     self.cancelled = YES;
 }
 
-- (void)fetchMediaWithCompletionHandler:(InstagramMediaRequestCompletionHandler)completionHandler {
+- (void)fetchMediaWithCompletionHandler:(InstagramMediaRequestCompletionHandler)completionHandler filter:(InstagramMediaFilter)filter {
     NXOAuth2Account *account = [[[NXOAuth2AccountStore sharedStore] accounts] lastObject];
-    [self fetchMediaForAccount:account completionHandler:completionHandler];
+    [self fetchMediaForAccount:account completionHandler:completionHandler filter:filter];
 }
 
-- (void)fetchMediaForAccount:(NXOAuth2Account *)account completionHandler:(InstagramMediaRequestCompletionHandler)completionHandler {
+- (void)fetchMediaForAccount:(NXOAuth2Account *)account completionHandler:(InstagramMediaRequestCompletionHandler)completionHandler filter:(InstagramMediaFilter)filter {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     if ([self.baseURL rangeOfString:@"access_token"].location == NSNotFound) {
@@ -171,7 +170,9 @@
                                                                                              caption:[[d valueForKey:@"caption"] valueForKey:@"text"]
                                                                                             latitude:lat
                                                                                            longitude:lon];
-                                   [media addObject:im];
+                                   if (filter(im) == TRUE) {
+                                       [media addObject:im];
+                                   }
                                    
                                }
                                

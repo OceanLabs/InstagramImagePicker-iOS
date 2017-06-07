@@ -17,7 +17,9 @@
 @implementation ViewController
 
 - (IBAction)onShowInstagramImagePickerClicked:(id)sender {
-    OLInstagramImagePickerController *imagePicker = [[OLInstagramImagePickerController alloc] initWithClientId:@"a6a09c92a14d488baa471e5209906d3d" secret:@"bfb814274cd041a5b7e06f32608e0e87" redirectURI:@"kite://instagram-callback"];
+    OLInstagramImagePickerController *imagePicker = [[OLInstagramImagePickerController alloc] initWithClientId:@"a6a09c92a14d488baa471e5209906d3d"
+                                                                                                        secret:@"bfb814274cd041a5b7e06f32608e0e87"
+                                                                                                   redirectURI:@"kite://instagram-callback"];
     imagePicker.delegate = self;
     imagePicker.selected = self.selectedImages;
     [self presentViewController:imagePicker animated:YES completion:nil];
@@ -40,6 +42,15 @@
 
 - (void)instagramImagePickerDidCancelPickingImages:(OLInstagramImagePickerController *)imagePicker {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (BOOL)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker shouldDisplayMedis:(OLInstagramMedia *)media {
+    if (media.latitude.doubleValue > 0.0 || media.longitude.doubleValue > 0.0) {
+        NSLog(@"latitude: %@ longitude: %@", media.latitude.stringValue, media.longitude.stringValue);
+        return TRUE;
+    }
+    
+    return FALSE;
 }
 
 @end

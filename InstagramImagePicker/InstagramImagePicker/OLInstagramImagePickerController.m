@@ -111,6 +111,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     self.inProgressMediaRequest = self.nextMediaRequest;
     self.nextMediaRequest = nil;
     [self.inProgressMediaRequest fetchMediaWithCompletionHandler:^(NSError *error, NSArray *media, OLInstagramMediaRequest *nextRequest) {
+//    [self.inProgressMediaRequest fetchMediaWithCompletionHandler:^(NSError *error, NSArray *media, OLInstagramMediaRequest *nextRequest) {
         self.inProgressMediaRequest = nil;
         self.nextMediaRequest = nextRequest;
         self.loadingIndicator.hidden = YES;
@@ -166,7 +167,16 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
             }
         }
         [self.selectedImagesInFuturePages removeObjectsInArray:selectedItemsInThisPage];
+    }
+    filter:^BOOL(OLInstagramMedia *media) {
+        OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
+        if ([picker.delegate respondsToSelector:@selector(instagramImagePicker:shouldDisplayMedis:)]){
+            return [picker.delegate instagramImagePicker:picker shouldDisplayMedis:media];
+        }
+
+        return TRUE;
     }];
+
 }
 
 - (void)onButtonLogoutClicked {

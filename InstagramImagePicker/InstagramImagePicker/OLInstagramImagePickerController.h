@@ -56,6 +56,15 @@
  @return Returns whether or not the image should be selected
  */
 - (BOOL)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker shouldSelectImage:(OLInstagramMedia *)image;
+
+/**
+ Filter to ask the delegate should media be avilable to present in view
+ @param imagePicker The OLInstagramImagePickerController picker instance that you instantiated to facilitate the picking operation
+ @param media The OLInstagram media about to be filtered
+ @return Returns whether or not the media should be available
+ */
+- (BOOL)instagramImagePicker:(OLInstagramImagePickerController *)imagePicker shouldDisplayMedis:(OLInstagramMedia *)media;
+
 @end
 
 /** 
