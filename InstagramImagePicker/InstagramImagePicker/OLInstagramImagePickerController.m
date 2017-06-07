@@ -112,7 +112,6 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     self.inProgressMediaRequest = self.nextMediaRequest;
     self.nextMediaRequest = nil;
     [self.inProgressMediaRequest fetchMediaWithCompletionHandler:^(NSError *error, NSArray *media, OLInstagramMediaRequest *nextRequest) {
-//    [self.inProgressMediaRequest fetchMediaWithCompletionHandler:^(NSError *error, NSArray *media, OLInstagramMediaRequest *nextRequest) {
         self.inProgressMediaRequest = nil;
         self.nextMediaRequest = nextRequest;
         self.loadingIndicator.hidden = YES;
