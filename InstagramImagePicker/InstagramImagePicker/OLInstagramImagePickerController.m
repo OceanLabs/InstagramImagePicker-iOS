@@ -94,7 +94,8 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [self enableUI:TRUE];
+
     [self updateTitleWithSelectedIndexPaths:self.selected.count];
 }
 
@@ -179,7 +180,14 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 
 }
 
+- (void)enableUI:(BOOL)isEnable {
+    [self.navigationItem.rightBarButtonItem setEnabled:isEnable];
+    [self.navigationItem.leftBarButtonItem setEnabled:isEnable];
+}
+
 - (void)onButtonLogoutClicked {
+    [self enableUI:FALSE];
+
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     NSArray *cookies = [NSArray arrayWithArray:[storage cookies]];
@@ -198,6 +206,8 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 }
 
 - (void)onButtonDoneClicked {
+    [self enableUI:FALSE];
+    
     [self.inProgressMediaRequest cancel];
     OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
     [picker.delegate instagramImagePicker:picker didFinishPickingImages:self.selected];
