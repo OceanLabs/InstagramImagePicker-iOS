@@ -108,6 +108,26 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
     [self loadNextPage];
 }
 
+- (void)removeAccount {
+    NSArray *instagramAccounts = [[NXOAuth2AccountStore sharedStore] accountsWithAccountType:@"instagram"];
+    for (NXOAuth2Account *account in instagramAccounts) {
+        [[NXOAuth2AccountStore sharedStore] removeAccount:account];
+    }
+}
+
+- (void)processError:(NSError *)error {
+    // clear all accounts and redo login...
+    if (error.domain == kOLInstagramImagePickerErrorDomain && error.code == kOLInstagramImagePickerErrorCodeOAuthTokenInvalid) {
+        // need to renew auth token, start by clearing any accounts. A new one will be created as part of the login process.
+        [self removeAccount];
+
+        [((OLInstagramImagePickerController *) self.navigationController) flipToInstagramLoginController];
+    } else {
+        OLInstagramImagePickerController *imagePicker = (OLInstagramImagePickerController *) self.navigationController;
+        [imagePicker.delegate instagramImagePicker:imagePicker didFailWithError:error];
+    }
+}
+
 - (void)loadNextPage {
     self.inProgressMediaRequest = self.nextMediaRequest;
     self.nextMediaRequest = nil;
@@ -117,23 +137,10 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
         self.loadingIndicator.hidden = YES;
         
         if (error) {
-            // clear all accounts and redo login...
-            if (error.domain == kOLInstagramImagePickerErrorDomain && error.code == kOLInstagramImagePickerErrorCodeOAuthTokenInvalid) {
-                // need to renew auth token, start by clearing any accounts. A new one will be created as part of the login process.
-                NSArray *instagramAccounts = [[NXOAuth2AccountStore sharedStore] accountsWithAccountType:@"instagram"];
-                for (NXOAuth2Account *account in instagramAccounts) {
-                    [[NXOAuth2AccountStore sharedStore] removeAccount:account];
-                }
-                
-                [((OLInstagramImagePickerController *) self.navigationController) flipToInstagramLoginController];
-            } else {
-                OLInstagramImagePickerController *imagePicker = (OLInstagramImagePickerController *) self.navigationController;
-                [imagePicker.delegate instagramImagePicker:imagePicker didFailWithError:error];
-            }
-            
+            [self processError:error];
             return;
         }
-        
+
         NSAssert(self.overflowMedia.count < 4, @"oops");
         NSUInteger mediaStartCount = self.media.count;
         [self.media addObjectsFromArray:self.overflowMedia];
@@ -147,16 +154,16 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
             [self.media addObjectsFromArray:media];
             self.overflowMedia = @[];
         }
-        
+
         // Insert new items
         NSMutableArray *addedItemPaths = [[NSMutableArray alloc] init];
         for (NSUInteger itemIndex = mediaStartCount; itemIndex < self.media.count; ++itemIndex) {
             [addedItemPaths addObject:[NSIndexPath indexPathForItem:itemIndex inSection:0]];
         }
-        
+
         [self.collectionView insertItemsAtIndexPaths:addedItemPaths];
         ((UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout).footerReferenceSize = CGSizeMake(0, nextRequest == nil ? 0 : 44);
-        
+
         // If any of the items in the newly loaded page were previously selected then make them selected
         NSMutableArray *selectedItemsInThisPage = [[NSMutableArray alloc] init];
         for (NSUInteger itemIndex = mediaStartCount; itemIndex < self.media.count; ++itemIndex) {
@@ -167,6 +174,10 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
             }
         }
         [self.selectedImagesInFuturePages removeObjectsInArray:selectedItemsInThisPage];
+        
+        if (self.nextMediaRequest != nil && self.media.count <= 40) {
+            [self loadNextPage];
+        }
     }
     filter:^BOOL(OLInstagramMedia *media) {
         OLInstagramImagePickerController *picker = (OLInstagramImagePickerController *) self.navigationController;
@@ -196,10 +207,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
         }
     }
     
-    NSArray *instagramAccounts = [[NXOAuth2AccountStore sharedStore] accountsWithAccountType:@"instagram"];
-    for (NXOAuth2Account *account in instagramAccounts) {
-        [[NXOAuth2AccountStore sharedStore] removeAccount:account];
-    }
+    [self removeAccount];
     
     [((OLInstagramImagePickerController *) self.navigationController) flipToInstagramLoginController];
 }
@@ -288,8 +296,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    InstagramSupplementaryView *v = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kSupplementaryViewFooterReuseIdentifier forIndexPath:indexPath];
-    return v;
+    return [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kSupplementaryViewFooterReuseIdentifier forIndexPath:indexPath];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
