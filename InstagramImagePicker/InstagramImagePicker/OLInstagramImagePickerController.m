@@ -140,6 +140,11 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
             [self processError:error];
             return;
         }
+        
+        if (self.nextMediaRequest != nil && media.count == 0) {
+            [self loadNextPage];
+            return;
+        }
 
         NSAssert(self.overflowMedia.count < 4, @"oops");
         NSUInteger mediaStartCount = self.media.count;
@@ -147,6 +152,7 @@ static NSString *const kImagePickerCellReuseIdentifier = @"co.oceanlabs.ps.kImag
         if (nextRequest != nil) {
             // only insert multiple of 4 images so we fill complete rows
             NSInteger overflowCount = (self.media.count + media.count) % 4;
+            overflowCount = overflowCount <= media.count ? overflowCount : media.count;
             [self.media addObjectsFromArray:[media subarrayWithRange:NSMakeRange(0, media.count - overflowCount)]];
             self.overflowMedia = [media subarrayWithRange:NSMakeRange(media.count - overflowCount, overflowCount)];
         } else {
