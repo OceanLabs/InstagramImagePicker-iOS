@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1270DA891F8671350003A9A3 /* videocam_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 1270DA801F8671310003A9A3 /* videocam_white.png */; };
+		1270DA8A1F8671350003A9A3 /* OLInstagramImagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1270DA811F8671310003A9A3 /* OLInstagramImagePickerViewController.xib */; };
+		1270DA8B1F8671350003A9A3 /* videocam_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1270DA821F8671310003A9A3 /* videocam_white@3x.png */; };
+		1270DA8D1F8671350003A9A3 /* videocam_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1270DA841F8671310003A9A3 /* videocam_white@2x.png */; };
+		1270DA8E1F8671350003A9A3 /* OLInstagramLoginWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1270DA851F8671310003A9A3 /* OLInstagramLoginWebViewController.xib */; };
+		1270DA8F1F8671350003A9A3 /* CTAssetsPickerChecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1270DA861F8671310003A9A3 /* CTAssetsPickerChecked@2x.png */; };
+		1270DA901F8671350003A9A3 /* CTAssetsPickerChecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1270DA871F8671310003A9A3 /* CTAssetsPickerChecked.png */; };
 		2E5BDC461CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5BDC431CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.m */; };
 		2E5BDC471CEDEA1D00257B1A /* OLInstagramImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5BDC451CEDEA1D00257B1A /* OLInstagramImageDownloader.m */; };
 		3D0D7AC61AC070F300746FC8 /* UIImageView+InstagramFadeIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D7AC51AC070F300746FC8 /* UIImageView+InstagramFadeIn.m */; };
@@ -31,9 +38,6 @@
 		CD96219E185B7928007FFBE6 /* OLInstagramMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = CD96219A185B7928007FFBE6 /* OLInstagramMedia.m */; };
 		CD96219F185B7928007FFBE6 /* OLInstagramImagePickerConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CD96219C185B7928007FFBE6 /* OLInstagramImagePickerConstants.m */; };
 		CD9621A3185B7937007FFBE6 /* OLInstagramImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9621A2185B7937007FFBE6 /* OLInstagramImagePickerCell.m */; };
-		CD9621A7185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9621A5185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib */; };
-		CD9621A8185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD9621A6185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib */; };
-		CD99CB5A185CF6060099A29A /* InstagramImagePicker.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD99CB59185CF6060099A29A /* InstagramImagePicker.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,13 @@
 /* Begin PBXFileReference section */
 		09D8107F4D92672EE8BD1762 /* libPods-InstagramImagePicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstagramImagePicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C632759218AC3E6CE595F2F /* Pods-InstagramImagePicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramImagePicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstagramImagePicker/Pods-InstagramImagePicker.release.xcconfig"; sourceTree = "<group>"; };
+		1270DA801F8671310003A9A3 /* videocam_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videocam_white.png; sourceTree = "<group>"; };
+		1270DA811F8671310003A9A3 /* OLInstagramImagePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OLInstagramImagePickerViewController.xib; sourceTree = "<group>"; };
+		1270DA821F8671310003A9A3 /* videocam_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videocam_white@3x.png"; sourceTree = "<group>"; };
+		1270DA841F8671310003A9A3 /* videocam_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videocam_white@2x.png"; sourceTree = "<group>"; };
+		1270DA851F8671310003A9A3 /* OLInstagramLoginWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OLInstagramLoginWebViewController.xib; sourceTree = "<group>"; };
+		1270DA861F8671310003A9A3 /* CTAssetsPickerChecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CTAssetsPickerChecked@2x.png"; sourceTree = "<group>"; };
+		1270DA871F8671310003A9A3 /* CTAssetsPickerChecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CTAssetsPickerChecked.png; sourceTree = "<group>"; };
 		2E5BDC421CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLInstagramImageDownloadDelegate.h; sourceTree = "<group>"; };
 		2E5BDC431CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLInstagramImageDownloadDelegate.m; sourceTree = "<group>"; };
 		2E5BDC441CEDEA1D00257B1A /* OLInstagramImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLInstagramImageDownloader.h; sourceTree = "<group>"; };
@@ -87,9 +98,6 @@
 		CD96219C185B7928007FFBE6 /* OLInstagramImagePickerConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLInstagramImagePickerConstants.m; sourceTree = "<group>"; };
 		CD9621A1185B7937007FFBE6 /* OLInstagramImagePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLInstagramImagePickerCell.h; sourceTree = "<group>"; };
 		CD9621A2185B7937007FFBE6 /* OLInstagramImagePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLInstagramImagePickerCell.m; sourceTree = "<group>"; };
-		CD9621A5185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OLInstagramImagePickerViewController.xib; sourceTree = "<group>"; };
-		CD9621A6185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OLInstagramLoginWebViewController.xib; sourceTree = "<group>"; };
-		CD99CB59185CF6060099A29A /* InstagramImagePicker.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = InstagramImagePicker.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +125,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1270DA7F1F8671310003A9A3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1270DA921F86713C0003A9A3 /* Images */,
+				1270DA931F86715B0003A9A3 /* XIB */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1270DA921F86713C0003A9A3 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1270DA801F8671310003A9A3 /* videocam_white.png */,
+				1270DA821F8671310003A9A3 /* videocam_white@3x.png */,
+				1270DA841F8671310003A9A3 /* videocam_white@2x.png */,
+				1270DA861F8671310003A9A3 /* CTAssetsPickerChecked@2x.png */,
+				1270DA871F8671310003A9A3 /* CTAssetsPickerChecked.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		1270DA931F86715B0003A9A3 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				1270DA811F8671310003A9A3 /* OLInstagramImagePickerViewController.xib */,
+				1270DA851F8671310003A9A3 /* OLInstagramLoginWebViewController.xib */,
+			);
+			name = XIB;
+			sourceTree = "<group>";
+		};
 		867F9E69D09ECB90DEFB7532 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +187,6 @@
 		CD18F749185DE4CB00CA2653 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				CD9621A4185B7C05007FFBE6 /* XIB */,
 				CD9621A1185B7937007FFBE6 /* OLInstagramImagePickerCell.h */,
 				CD9621A2185B7937007FFBE6 /* OLInstagramImagePickerCell.m */,
 				2E5BDC421CEDEA1D00257B1A /* OLInstagramImageDownloadDelegate.h */,
@@ -198,7 +235,7 @@
 		CD96215F185B77BF007FFBE6 /* InstagramImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				CD99CB59185CF6060099A29A /* InstagramImagePicker.xcassets */,
+				1270DA7F1F8671310003A9A3 /* Resources */,
 				CD9621A0185B792C007FFBE6 /* View */,
 				CD962196185B791E007FFBE6 /* Model */,
 				CD962195185B783E007FFBE6 /* Controller */,
@@ -276,15 +313,6 @@
 				CD18F749185DE4CB00CA2653 /* Private */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		CD9621A4185B7C05007FFBE6 /* XIB */ = {
-			isa = PBXGroup;
-			children = (
-				CD9621A5185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib */,
-				CD9621A6185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib */,
-			);
-			name = XIB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,12 +394,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1270DA8F1F8671350003A9A3 /* CTAssetsPickerChecked@2x.png in Resources */,
 				CD962164185B77BF007FFBE6 /* InfoPlist.strings in Resources */,
-				CD99CB5A185CF6060099A29A /* InstagramImagePicker.xcassets in Resources */,
-				CD9621A8185B7C0F007FFBE6 /* OLInstagramLoginWebViewController.xib in Resources */,
-				CD9621A7185B7C0F007FFBE6 /* OLInstagramImagePickerViewController.xib in Resources */,
+				1270DA891F8671350003A9A3 /* videocam_white.png in Resources */,
+				1270DA901F8671350003A9A3 /* CTAssetsPickerChecked.png in Resources */,
+				1270DA8D1F8671350003A9A3 /* videocam_white@2x.png in Resources */,
 				CD96216D185B77BF007FFBE6 /* Main.storyboard in Resources */,
 				3D9DE3B01ADB1F2B001E1FA1 /* Default-568h@2x.png in Resources */,
+				1270DA8A1F8671350003A9A3 /* OLInstagramImagePickerViewController.xib in Resources */,
+				1270DA8E1F8671350003A9A3 /* OLInstagramLoginWebViewController.xib in Resources */,
+				1270DA8B1F8671350003A9A3 /* videocam_white@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,13 +454,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InstagramImagePicker-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -532,7 +567,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -564,7 +599,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
